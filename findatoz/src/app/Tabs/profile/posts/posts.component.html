@@ -1,0 +1,25 @@
+
+<div class="ion-text-center pad-top" *ngIf="loader" >
+  <app-loader></app-loader>
+</div>
+
+<ion-grid *ngIf="msgFlag">
+  <ion-row class="ion-text-center" style="margin-top:5%">
+    <ion-col>
+      <strong>No Images uploaded</strong>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid style="padding-bottom:5%">
+  <ion-row class="ion-no-padding">
+    <ion-col style='padding:1%' size='4' *ngFor='let image of images;let i=index' >
+      <img src={{image.pic}} (click)="imageClick(i)">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="onUpload()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>

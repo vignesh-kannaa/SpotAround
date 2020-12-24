@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+     <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
+    </ion-buttons>
+        <h3 >My Calendar</h3>
+     <ion-buttons large slot="end" style="margin-right: 5%;">
+      <a [routerLink]="['/tabs/settings']"> <ion-icon name="settings-outline"></ion-icon> </a>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="back()" style="padding-left: 15%;">
+      <ion-icon color="primary" name="chevron-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title class="ion-text-center" color="primary">
+      {{viewTitle}}
+    </ion-title>
+    <ion-buttons slot="end" (click)="next()" style="padding-right: 15%;">
+      <ion-icon  color="primary" name="chevron-forward-outline"></ion-icon>
+    </ion-buttons>
+     </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <calendar [eventSource]="eventSource"
+  [calendarMode]="calendar.mode"
+  [currentDate]="calendar.currentDate"
+  (onTitleChanged)="onViewTitleChanged($event)">
+</calendar>
+</ion-content>

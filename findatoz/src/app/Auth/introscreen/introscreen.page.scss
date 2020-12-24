@@ -1,0 +1,25 @@
+ion-card{
+    width: 100%;
+    margin: 0;
+}
+ion-button{
+    margin: 0% 5% 0 5%;
+}
+
+.image{
+    margin:5% 5% 0% 5%;
+    height: 255px;
+}
+.swiper-slide img{
+    max-height: 80%;
+}
+ion-slides{
+    height: 90%;
+}
+.heading{
+    height: 90px;
+    margin: 5% 5% 5% 5%;
+}
+ion-content{
+    --background:white;
+}

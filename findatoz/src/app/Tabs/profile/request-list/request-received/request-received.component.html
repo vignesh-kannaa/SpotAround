@@ -1,0 +1,32 @@
+<ion-grid *ngIf="msgFlag">
+  <ion-row class="ion-text-center" style="margin-top:40%">
+    <ion-col>
+      <strong>No Requests made!</strong>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+<div *ngIf="!msgFlag">
+  <ion-card *ngFor='let request of requestlist; let i = index'>
+    <ion-list lines="none" (click)="onClick(i)">
+          <ion-item>
+            <h3>{{UsersName[i]}}</h3>
+            
+            <ion-badge *ngIf="request.status==='Pending'"  slot="end" color="warning">{{request.status}}</ion-badge>
+            <ion-badge *ngIf="request.status==='Approved'"  slot="end" color="tertiary">{{request.status}}</ion-badge>
+            <ion-badge *ngIf="request.status==='Completed'"  slot="end" color="success">{{request.status}}</ion-badge>
+            <ion-badge *ngIf="request.status==='Cancelled'"  slot="end" color="danger">{{request.status}}</ion-badge>
+            <ion-badge *ngIf="request.status==='Rejected'"  slot="end" color="medium">{{request.status}}</ion-badge>
+          </ion-item>
+          <ion-item>
+            <img src="assets/calendarlogo.svg">
+            <ion-label>{{request.startDate |  date:'mediumDate'}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <img src="assets/timelogo.svg">
+            <ion-label>{{request.startTime |  date:'shortTime'}} - {{request.endTime |  date:'shortTime'}}</ion-label>
+          </ion-item>
+          </ion-list>
+    </ion-card>
+  </div>

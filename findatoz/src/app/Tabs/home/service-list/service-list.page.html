@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-back-button text=""  defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+     <h3 class="ion-text-center"> {{category}}</h3>
+      <ion-buttons large slot="end" style=" margin-left: 10%;">
+        <a [routerLink]="['/tabs/settings']"> <ion-icon name="settings-outline"></ion-icon> </a>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content *ngIf="msgFlag">
+      <ion-row class="ion-text-center" style="margin-top:40%">
+        <ion-col>
+          <strong>No Services available</strong>
+        </ion-col>
+      </ion-row>
+  </ion-content>
+
+
+  <ion-content *ngIf="!msgFlag">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="search-pad">
+          <ion-searchbar placeholder="Search"
+                        (ionInput)="getItems($event)">
+        </ion-searchbar>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="ion-text-center pad-top" *ngIf="loader" >
+      <app-loader></app-loader>
+    </div>
+
+    <ion-card *ngFor="let item of filterservice">
+      <!-- <ion-list lines=none>
+        <ion-item-sliding>
+        <ion-item> -->
+      <ion-grid >
+        <ion-row  (click)='servdetail(item.email)'>
+          <ion-col size="3">
+              <ion-avatar>
+                <img *ngIf="item?.imagePath" src={{item.imagePath}}/>
+                <img *ngIf="!item?.imagePath" src="assets/avatar.svg"/>
+              </ion-avatar>
+          </ion-col>  
+         <ion-col size="6" class="mar-top">
+            <ion-row class="name">
+              <b>{{item.firstName}} {{item.lastName}}</b>
+            </ion-row>
+            <ion-row class="rating color">
+              
+              <img src="assets/ratings/rating-{{item.ratings | number: '1.0-0' }}.svg">
+                &nbsp;
+                <span>{{item.ratings | number: '1.0-0' }}.0 </span>
+          </ion-row>
+        </ion-col>
+         <ion-col size="3" class="city right-pad mar-top">
+          {{item.city}}
+        </ion-col>
+        
+        
+        </ion-row>
+     
+        </ion-grid>
+      
+      <!-- </ion-item> -->
+      <!-- <ion-item-options>
+        <ion-item-option color='secondary'>
+          
+          <ion-icon (click)="message(item.email)" slot="icon-only" name="chatbubble-outline"></ion-icon>
+        </ion-item-option>
+        
+      </ion-item-options>  -->
+    <!-- </ion-item-sliding>
+        </ion-list> -->
+      </ion-card>
+</ion-content>

@@ -1,0 +1,30 @@
+<div>
+  <ion-list lines=none>
+    <a [routerLink]="['/tabs/profile/request-list']" >
+        <ion-item detail>
+          <ion-icon  name="create-outline"></ion-icon>
+          <ion-label>Requests </ion-label>
+        </ion-item>
+    </a>
+ 
+    <a [routerLink]="['/tabs/profile/feedback']" >
+    <ion-item detail>        
+      <ion-icon  name="document-outline"></ion-icon>
+      <ion-label>Feedbacks</ion-label>
+    </ion-item>
+    </a>
+    <a [routerLink]="['/tabs/profile/my-calendar']" >
+      <ion-item  detail>
+       <ion-icon name="calendar-outline"></ion-icon>
+         <ion-label> My calendar</ion-label>
+       </ion-item>
+     </a>
+  <a [routerLink]="['/tabs/profile/feedback']" >
+    <ion-item detail>        
+      <ion-icon name="share-social-outline"></ion-icon>
+      <ion-label>Share profile to friends</ion-label>
+    </ion-item>
+    </a>
+
+  </ion-list>
+</div> 

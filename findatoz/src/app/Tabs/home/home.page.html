@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar >
+     <ion-buttons slot="start">
+       <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+
+        <h3 class="ion-text-center">Home</h3>
+   
+      <ion-buttons large slot="end">
+        <a [routerLink]="['/tabs/settings']"> <ion-icon name="settings-outline"></ion-icon> </a>
+      </ion-buttons>
+     
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content *ngIf="msgFlag" >
+  <ion-row class="ion-text-center" style="margin-top:40%">
+    <ion-col>
+      <strong>No Featured services available</strong>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+
+<ion-content *ngIf="!msgFlag">
+
+  <ion-row>
+    <ion-col class="search-pad">
+      <ion-searchbar placeholder="Search"
+                    (ionInput)="getItems($event)">
+    </ion-searchbar>
+    </ion-col>
+  </ion-row>
+
+
+<ion-grid *ngIf="!loader">
+<ion-row>
+  <ion-col size="6" *ngFor="let item of filterData"
+            (click)="loadlist(item.subCategory)">
+        <ion-card class="ion-text-center"> 
+          <ion-card-content> 
+              <ion-avatar>
+                <img *ngIf="!item.imagePath_SC" src="assets/blue.png">
+                <img *ngIf="item.imagePath_SC" src={{item.imagePath_SC}}>
+              </ion-avatar>
+          </ion-card-content>
+          <div class="sub-cat">
+              <strong>{{item.subCategory}}</strong>
+        </div>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card class="ion-text-center" (click)="toCategory()"> 
+        <ion-card-content> 
+            <ion-avatar>
+              <img  src="assets/category/All.svg">
+            </ion-avatar>
+        </ion-card-content>
+        <div class="sub-cat">
+            <strong>+20 More</strong>
+      </div>
+    </ion-card>
+  </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!----------Skeleton Loading ------->
+<ion-grid *ngIf="loader">
+  <ion-row>
+    <ion-col size="6">
+          <ion-card class="bg-color"> 
+            <ion-skeleton-text animated=true></ion-skeleton-text>
+          </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card  class="bg-color"> 
+          <ion-skeleton-text animated=true></ion-skeleton-text>
+          </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card  class="bg-color"> 
+        <ion-skeleton-text animated=true></ion-skeleton-text>
+      </ion-card>
+  </ion-col>
+  <ion-col size="6">
+    <ion-card  class="bg-color"> 
+       <ion-skeleton-text animated=true></ion-skeleton-text>
+    </ion-card>
+</ion-col>
+<ion-col size="6">
+  <ion-card  class="bg-color"> 
+           <ion-skeleton-text animated=true></ion-skeleton-text>
+  </ion-card>
+</ion-col>
+<ion-col size="6">
+  <ion-card  class="bg-color"> 
+     <ion-skeleton-text animated=true></ion-skeleton-text>
+  </ion-card>
+</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+

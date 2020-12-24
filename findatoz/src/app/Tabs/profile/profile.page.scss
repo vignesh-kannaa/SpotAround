@@ -1,0 +1,51 @@
+.profile{
+    margin: auto;
+    height: auto;
+    width: 35%;
+    border: 2px solid #FFFFFF;
+
+ }
+ .size{
+    font-size: x-large;
+  
+ }
+a{
+    text-decoration: none;
+}
+.pad{
+    padding-left: 50px;
+}
+ion-buttons{
+    margin-left: 4%;
+    margin-right: 4%;
+ }
+ion-icon {
+    font-size: 25px;
+    color:#000000;
+   }
+
+ion-button{
+    margin: auto;
+    width: 100%;
+    text-transform: none;
+}
+ion-card{
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: none;
+}
+strong{
+    color:#000000bf;
+}
+ion-segment-button{
+    text-transform: none;
+}
+
+ion-label{
+    margin-left: 6%;
+    margin-top: 5%;
+}
+//ios styling
+.ios ion-card{
+    margin: 1% 0%;
+}

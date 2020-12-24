@@ -1,0 +1,12 @@
+changes for heroku
+
+application properties 
+queries remove database name from queries
+add driver for postgresql
+
+
+#spring.jpa.hibernate.ddl-auto=update
+#spring.datasource.url=jdbc:mysql://localhost:3306/spotaround
+#spring.datasource.username=root
+#spring.datasource.password=Password@123
+#spring.jpa.show-sql=true

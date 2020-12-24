@@ -1,0 +1,18 @@
+<div  *ngIf="loader" class="ion-text-center pad-top">
+  <app-loader></app-loader>
+</div>
+<div  *ngIf="msgFlag" >
+  <ion-row class="ion-text-center" style="margin-top:25%;margin-bottom: 25%;">
+    <ion-col>
+      <strong>No Images! </strong>
+    </ion-col>
+  </ion-row>
+</div>
+
+<ion-grid *ngIf="!msgFlag" class="pad">
+  <ion-row class="ion-no-padding">
+    <ion-col style='padding:1%' size='4' *ngFor='let image of images;let i=index' >
+      <img src={{image.pic}} (click)="onClick(i)">
+      </ion-col>
+    </ion-row>
+  </ion-grid>

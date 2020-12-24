@@ -1,0 +1,38 @@
+p{
+    padding: 10px;
+}
+ion-button{
+    width: 90%;
+    text-transform: none;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+}
+ion-content{
+   --background: #ffffff;
+}
+.logo{
+    width: 20%;
+}
+a{
+text-decoration: none;
+}
+ion-card{
+    border-radius: 64px;
+    height: 6%;
+    width: 90%;
+    margin: 5% 5%;
+}
+
+.align-img{
+    vertical-align: middle;
+    margin: 1% 2%;
+}
+.align-left{
+    text-align: start;
+}
+
+.align-right{
+    text-align: end;
+}
+.pad-top{
+    padding-top: 6px;
+}

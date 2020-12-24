@@ -1,0 +1,45 @@
+<ion-content>
+  <ion-grid>
+    <ion-row class=" ion-text-center" style="padding: 60px 0px 20px;">
+      <ion-col class="ion-padding-top">
+        <img class="logo" src="assets/loader.svg">
+      </ion-col>
+    </ion-row>
+    <ion-row class=" ion-text-center">
+      <ion-col style="padding-bottom: 30px;">
+      <strong style="font-size: 24px;">Lets get Started</strong>
+      </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <ion-card  class="ion-text-center pad-top"  (click)="socailSignIn('fb')">
+     <div>
+        <img class="align-img" src="assets/fb.svg">
+           <strong>Continue using Facebook</strong>
+        </div>
+    </ion-card>
+
+    <ion-card class="ion-text-center pad-top"  (click)="socailSignIn('google')">
+     <div>
+       <img  class="align-img" src="assets/google-logo.svg">
+      <strong>Continue using Google</strong>
+    </div>
+    </ion-card>
+
+    <a routerLink="/auth">
+    <ion-card  class="ion-text-center pad-top">
+      <div>
+        <img class="align-img" style="margin-top: 2%;" src="assets/email-logo.svg">
+           <strong>Continue using Email</strong>
+      </div>
+    </ion-card>
+    </a>
+
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <span (click)='onSkip()' style="color: #300099;font-weight: bold;">Skip</span>
+        </ion-col>
+      </ion-row>
+  
+</ion-content>
+

@@ -1,0 +1,35 @@
+<div class="ion-text-center">
+  <ion-spinner  color="primary" *ngIf="loader"></ion-spinner>
+</div>
+<div  *ngIf="msgFlag" >
+    <ion-row class="ion-text-center" style="margin-top:25%;margin-bottom: 25%;">
+      <ion-col>
+        <strong>No info! </strong>
+      </ion-col>
+    </ion-row>
+  </div>
+<div  *ngIf="!msgFlag"> 
+    <ion-grid class="mar">
+      <div>
+        <h5>Description</h5>
+      </div>
+        <ion-row>
+            <ion-col>
+         
+            <ion-text>{{description}}</ion-text>
+            </ion-col>
+        </ion-row>
+        <div>
+          <h5>Skills</h5>
+        </div>
+        <ion-row style="padding-bottom: 5%;">
+          <ion-col >
+            <ion-chip outline=true *ngFor='let skills of providerskillsArray'>
+              <ion-label>{{skills.skills}}</ion-label>
+            </ion-chip>
+
+            <!-- <ion-button  color='medium' shape="round" style="width: 100%;margin-bottom: 20px;" >Read More</ion-button> -->
+        </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>

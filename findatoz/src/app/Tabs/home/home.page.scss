@@ -1,0 +1,63 @@
+//header
+ion-icon {
+   font-size: 25px;
+   color:#000000;
+  }
+ion-buttons{
+   margin-left: 4%;
+   margin-right: 4%;
+}
+ion-grid{
+  margin: 0% 2%;
+  }
+ ion-avatar{
+  width: 75%;
+  height: auto;
+   margin: auto;
+}
+
+ ion-card{
+    width: 90%;
+    height: 90%;
+    box-shadow: none;
+ }
+ ion-card-content{
+    padding: 13px;
+ }
+ 
+ .sub-cat{
+   color:#000000;
+   padding-bottom: 13px;
+ }
+ ion-col{
+    padding: 0%;
+ }
+
+ .search-pad{
+   padding: 3% 4% 0% 4%;
+   
+}
+//ios styling
+
+.ios .search-pad{
+   padding: 2% 3% 0% 3%;
+   
+}
+.ios ion-card{
+   margin: 0% 4% 6% 4%;
+}
+.ios .sub-cat{
+   padding-bottom: 22px;
+ }
+
+ //Skeleton Loading 
+
+ ion-skeleton-text{
+    width: 100%;
+    height: 100%;
+ }
+.bg-color{
+   width: 90%;
+   height: 150px;
+ background: center;
+}

@@ -1,0 +1,77 @@
+.messagestyle{
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+}
+
+.othermsg{
+margin-left: 4%;
+ background: #ffffff;
+ color: black;
+ padding: 10px;
+ box-shadow: 0px 2px 9px rgba(149, 149, 149, 0.19);
+ border-radius: 6px;
+ margin-bottom: 4px;
+ white-space: pre-wrap;
+ float: left;
+}
+.mymsg{
+    margin-right: 4%;
+    background-color: #300099db;
+    color: white;
+   float: right;
+   
+}
+ion-buttons{
+    margin-left: 2%;
+    margin-right: 4%;
+}
+ion-icon {
+    font-size: 25px;
+    color:#000000;
+}
+ion-card{
+    box-shadow: none;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+ }
+ ion-col{
+     padding: 0px;
+ }
+.msgbutton{
+    text-align: center;
+    width: auto;
+    height: auto;
+    margin: auto;
+    border: 1.5px solid #300099;
+}
+.msgBoard{
+    height: 76%;
+    overflow-y: scroll;  
+}
+strong{
+    font-weight: normal;
+}
+.pad{
+    padding: 24% 6% 0% 0%;
+}
+textarea{
+    padding-top: 6%;
+}
+ion-textarea{
+    color: black;
+}
+
+//ios styling
+.ios ion-card{
+    margin: 8px 0px;
+}
+.ios .pad{
+    padding: 15% 6% 0% 0%;
+}
+.ios .msgBoard{
+    height: 79%;
+    overflow-y: scroll;  
+}

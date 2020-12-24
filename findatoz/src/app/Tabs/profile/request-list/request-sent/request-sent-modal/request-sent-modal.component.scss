@@ -1,0 +1,27 @@
+ion-icon {
+    font-size: 25px;
+}
+ion-label{
+    padding-bottom: 3%;
+}
+
+ion-row{
+    width: 100%;
+}
+.pad{
+    padding-top: 5%;
+}
+ion-card{
+    height: 100%;
+}
+
+ion-button{
+    position: fixed;
+    left: 0;
+    bottom: 15px;
+    right: 0;
+}
+//ios styling
+.ios ion-card{
+    margin: 1% 0%;
+}

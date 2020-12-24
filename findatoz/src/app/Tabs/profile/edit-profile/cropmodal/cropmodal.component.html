@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar >
+     <ion-buttons slot="start">
+      <ion-icon  name="close-outline" slot="end" (click)="onClose()"></ion-icon>
+    </ion-buttons>
+        <h3 class="ion-text-center">Crop Image</h3>
+     <ion-buttons large slot="end" style=" margin-left: 10%;">
+      <ion-button color='primary' (click)="savecrop()">Post</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-content>
+  <image-cropper
+  [imageBase64]="imagesource"
+  [maintainAspectRatio]="true"
+  [aspectRatio]="2/2"
+  format="jpg"
+  outputType="base64">
+</image-cropper>
+  <!-- <ion-grid>
+    <ion-row class="ion-padding-bottom">
+      <ion-col class="ion-text-left">
+        <ion-button (click)="closecrop()">
+         Cancel
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <ion-button (click)="savecrop()">
+        Done
+      </ion-button>
+      </ion-col>
+      </ion-row>
+    </ion-grid> -->
+</ion-content>

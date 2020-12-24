@@ -1,0 +1,77 @@
+<ion-content>
+  <ion-slides pager="true" #mySlider (ionSlideReachEnd)="onLast()">
+<!-- slide 1 -->
+    <ion-slide>
+      <ion-grid>
+          <ion-row class="ion-text-center image">
+            <ion-col>
+              <img src="assets/introscreen/screen1.svg">
+              </ion-col>
+        </ion-row>
+        <ion-row class="ion-text-center heading">
+          <ion-col>
+              <h3>FIND YOUR RIGHT SERVICE</h3>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-text-center heading">
+          <ion-col>
+            <ion-label>Find your right services</ion-label>
+            </ion-col>
+        </ion-row>
+       
+     </ion-grid>
+    </ion-slide>
+
+<!-- SLIDE 2 -->
+<ion-slide>
+  <ion-grid>
+  <ion-row class="ion-text-center image">
+    <ion-col>
+      <img src="assets/introscreen/screen2.svg">
+      </ion-col>
+ </ion-row>
+ <ion-row class="ion-text-center heading">
+   <ion-col>
+      <h3>BE AN ENTREPRENEUR</h3>
+    </ion-col>
+ </ion-row>
+ <ion-row class="ion-text-center heading">
+   <ion-col>
+    <ion-label>Create your own service account</ion-label>
+    </ion-col>
+ </ion-row>
+  
+ </ion-grid>
+</ion-slide>
+
+<!-- SLIDE 3 -->
+<ion-slide>
+  <ion-grid>
+  <ion-row class="ion-text-center image">
+    <ion-col>
+      <img src="assets/introscreen/screen3.svg">
+      </ion-col>
+ </ion-row>
+ <ion-row class="ion-text-center heading">
+   <ion-col>
+      <h3>BOOK AND SCHEDULE APPOINTMENTS</h3>
+    </ion-col>
+ </ion-row>
+ <ion-row class="ion-text-center heading">
+   <ion-col>
+    <ion-label>Book and schedule appointments</ion-label>
+    </ion-col>
+ </ion-row>
+ 
+ </ion-grid>
+</ion-slide>
+  </ion-slides>
+
+
+    <ion-button *ngIf="!lastSlide" expand="full"
+        shape="round"
+        (click)="swipeNext()">Next</ion-button>
+      <ion-button  *ngIf="lastSlide" expand="full"
+        shape="round"
+        (click)="onContinue()">Continue</ion-button>
+</ion-content> 

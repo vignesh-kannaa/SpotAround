@@ -1,0 +1,36 @@
+<ion-header>
+
+    <ion-toolbar class="ion-text-center">
+      <strong style="padding-right: 10%;">FeedBack</strong>
+  
+  <ion-icon name="close-outline" slot="start" (click)="onClose()"></ion-icon>
+  
+  </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-card>
+      <form (ngSubmit)="onSubmit()" #feedback="ngForm">
+      
+       <rating [(ngModel)]="rate"
+                required
+                name="rate"
+                readonly="false" 
+                size="default" 
+                (ngModelChange)="onModelChange($event)">
+      </rating>
+
+      <ion-textarea
+                [(ngModel)]="review" 
+                name="review"
+                placeholder="Enter your review here...">
+      </ion-textarea>
+
+      <ion-button expand="full"
+                shape="round"
+                type="submit"
+                [disabled]="!feedback.form.valid">Send Feeback
+      </ion-button> 
+</form>
+    </ion-card>
+  </ion-content>

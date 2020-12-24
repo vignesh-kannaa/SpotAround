@@ -1,0 +1,40 @@
+
+ .active {
+    display: block
+ }
+
+ .inactive {
+    display: none;
+ }
+ ion-col{
+     margin: auto;
+     padding: 0;
+ }
+.mar-left{
+   margin-left: 6%;
+}
+.main-cat{
+   font-size: 18px;
+   font-weight: bold;
+   color: #000000
+}
+.sub-cat{
+   padding-top: 5%;
+   font-size: 14px;
+}
+.drow-down-icon{
+font-size: 18px;
+padding:4px 0px 0px 10px;
+}
+ ion-card{
+   margin: 12px 0px;
+   box-shadow: none;
+}
+ ion-icon{
+    opacity: inherit !important;
+ }
+ img{
+   display: block;
+   max-width: 105%;
+ }
+

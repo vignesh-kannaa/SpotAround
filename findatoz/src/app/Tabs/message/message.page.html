@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+     <ion-buttons slot="start">
+       <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+    <h3>Chats</h3>
+    <ion-buttons large slot="end" style=" margin-left: 10%;">
+      <a [routerLink]="['/tabs/settings']"> <ion-icon name="settings-outline"></ion-icon> </a>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>  
+
+                        <!----LOGIN MESSAGE----->
+<ion-grid *ngIf="!currentUser">
+<ion-row  class="ion-text-center" style="margin-top: 25%;">
+  <ion-col >
+        <img src="assets/chat.svg">
+    </ion-col>
+</ion-row>
+  <ion-row  class="ion-text-center" >      
+     <ion-col>
+      <strong>You can chat with other users only if you Login</strong><br><br>
+      <a [routerLink]="['/auth/onboard']">
+        <ion-button  color='secondary' shape="round" style="width: 100%;" >Login</ion-button>
+      </a>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+
+<!----NO CHATS MESSAGE----->
+  <ion-grid *ngIf="msgFlag && currentUser" >
+    <ion-row class="ion-text-center"style="margin-top:40%">
+      <ion-col >
+        <img src="assets/chat.svg">
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <strong>No Chats available</strong>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+<!----CHAT LISTS----->
+<div *ngIf="!msgFlag && currentUser">
+  <ion-grid>
+      <ion-row>
+        <ion-col class="search-pad">
+          <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+    <ion-card *ngFor="let item of filterData">
+      <ion-list lines=none>
+      <ion-row>
+        
+        <ion-col size="3">
+            <ion-avatar>
+              <img *ngIf="item.profile" src={{item.profile}}/>
+              <img *ngIf="!item.profile" src="assets/avatar.svg"/>
+            </ion-avatar>
+        </ion-col>  
+        
+        <ion-col (click)="message(item.email)" class="chatlist">
+              <strong>    {{item.name}}  </strong>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </ion-card>
+</div>   
+</ion-content>

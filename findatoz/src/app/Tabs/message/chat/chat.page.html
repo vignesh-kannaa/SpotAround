@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+     <ion-buttons slot="start">
+       <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+    <h3>Chats</h3>
+    <ion-buttons large slot="end" style=" margin-left: 10%;">
+      <a [routerLink]="['/tabs/settings']"> <ion-icon  name="settings-outline"></ion-icon> </a>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-row style="margin: 3% 4% 0% 4%;">
+    <ion-col size="1">
+      <a [routerLink]="['/tabs/message']">
+        <ion-icon style="color: black;" name="chevron-back-outline"></ion-icon>
+      </a>
+    </ion-col>
+     <ion-col size="10" style="font-size: 20px;;">
+      <strong>{{UserName}}</strong>
+      </ion-col>
+      <!-- <ion-col *ngIf="infoFlag" size="1">
+        <ion-icon color="primary" name="information-circle" (click)="infoDetail()"></ion-icon>
+        </ion-col> -->
+    </ion-row>
+
+    <ion-card class="msgBoard">
+      <ion-content #content style="--background:#fffff">
+    <ion-grid>
+      <ion-row *ngFor="let msg of messages" style="padding-top: 1%;">
+        <ion-col style="margin-left: 20%;" *ngIf="msg.fromId===currentUser.email">
+          <span  class="messagestyle mymsg" >{{msg.message}}</span>
+      </ion-col>
+        <ion-col style="margin-right:20%;" *ngIf="msg.fromId!==currentUser.email">
+            <span class=" othermsg">{{msg.message}}</span>
+          </ion-col>
+        </ion-row> 
+      </ion-grid>
+      </ion-content>
+    </ion-card>
+    <ion-card>  
+      <ion-row>       
+        <ion-col size="10" style="padding-left: 4%;">
+          <ion-textarea 
+                    placeholder="Type a message..."
+                    autosize [(ngModel)]="newmsg"
+                    ></ion-textarea>
+          </ion-col>
+          <ion-col size="2"  (click)="sendmsg()">
+            <img class="pad" src="assets/msgicon.svg">
+                <!-- <ion-icon color="primary"name="arrow-up-outline" style="margin: 15%;"></ion-icon> -->
+           
+            </ion-col> 
+        </ion-row>
+       </ion-card>
+</ion-content>

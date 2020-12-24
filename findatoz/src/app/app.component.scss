@@ -1,0 +1,29 @@
+ion-avatar{
+    width: 60px;
+    height: auto;
+    
+}
+ion-label{
+    margin-left: 6%;
+    margin-top: 5%;
+}
+a{
+    text-decoration: none;
+}
+.pad{
+    padding-top: 6%;
+    padding-left: 5%;
+}
+ion-list{
+    height: 100%;
+}
+img{
+    border: 2px solid #FFFFFF;
+}
+.mar{
+    margin: auto;
+}
+//ios styling
+.ios .mar{
+    margin: 0;
+}

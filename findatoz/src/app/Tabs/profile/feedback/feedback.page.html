@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
+    </ion-buttons>
+     <h3 class="ion-text-center">Feedbacks </h3>
+     <ion-buttons large slot="end" style=" margin-left: 10%;">
+      <a [routerLink]="['/tabs/settings']"> <ion-icon name="settings-outline"></ion-icon> </a>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<!---------------------------Normal user--------------------------------->
+
+<ion-content *ngIf='!creatorFlag'>
+  <app-feedback-provided></app-feedback-provided>
+</ion-content>
+
+
+<!-----------------------Creator account------------------------>
+<ion-content *ngIf='creatorFlag'>
+<ion-card>
+  <ion-segment (ionChange)="segmentChanged($event)" value="received">
+    <ion-segment-button value="received">
+      <p>Received</p>
+    </ion-segment-button>
+    <ion-segment-button value="given">
+      <ion-label>Given</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-card>
+  <br>
+  <div *ngIf="type==='received'"> 
+    <app-feedback-received></app-feedback-received>
+  </div>
+  <div *ngIf="type==='given'"> 
+    <app-feedback-provided></app-feedback-provided>
+  </div>
+  
+</ion-content>
+
+

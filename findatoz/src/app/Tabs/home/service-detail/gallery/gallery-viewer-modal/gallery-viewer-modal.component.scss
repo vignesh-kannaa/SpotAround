@@ -1,0 +1,18 @@
+.container{
+    position: relative;
+    margin: 5%;
+    height: 100%;
+}
+
+.rightarrow {
+    position: absolute;
+    top: 25%;
+    right: 3%;
+    font-size: 18px;
+  }
+  .leftarrow {
+    position: absolute;
+    top: 25%;
+    left: 3%;
+    font-size: 18px;
+  }

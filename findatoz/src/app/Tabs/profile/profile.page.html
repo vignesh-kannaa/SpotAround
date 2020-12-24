@@ -1,0 +1,160 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+       <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+        <h3 class="ion-text-center">Profile</h3>
+     <ion-buttons large slot="end" style=" margin-left: 10%;">
+      <a [routerLink]="['/tabs/settings']"> <ion-icon name="settings-outline"></ion-icon> </a>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="currentUser===null">
+  <ion-grid >
+      
+    <ion-row  class="ion-text-center" style="margin-top: 25%;">
+    
+    </ion-row>
+      <ion-row  class="ion-text-center" >      
+        <ion-col>
+          <strong>Login to create your profile</strong><br><br>
+          <a [routerLink]="['/auth/onboard']">
+            <ion-button  color='secondary' shape="round" style="width: 100%;" >Login</ion-button>
+          </a>
+          </ion-col>
+        </ion-row>  
+    </ion-grid>
+  </ion-content>
+
+<!---------------- Normal account---------------------->
+
+
+<ion-content *ngIf="!createrFlag && currentUser!==null">
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col>
+        <ion-avatar class="profile">
+           <ion-img src={{defaultimageUser}}></ion-img>
+          </ion-avatar>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button style="width: 75%;margin: auto;"
+                      color="light"
+                      expand="full"
+                      shape="round"
+                      type="submit" 
+                      (click)="onEdit()">Edit Profile</ion-button>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div>
+      <ion-list lines=none>
+        <a [routerLink]="['/tabs/profile/request-list']">
+            <ion-item detail>
+              <ion-icon  name="create-outline"></ion-icon>
+              <ion-label>Requests</ion-label>
+            </ion-item>
+        </a>
+        <a [routerLink]="['/tabs/profile/feedback']" >
+        <ion-item detail>        
+          <ion-icon  name="document-outline"></ion-icon>
+          <ion-label>My Feedbacks</ion-label>
+        </ion-item>
+        </a>
+       
+        <ion-item (click)="switchaccount(true)">
+          <ion-icon name="briefcase-outline"></ion-icon>
+          <ion-label>  Switch to Business  </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+
+
+  <!---------------- creater account---------------------->
+
+<ion-content  *ngIf="createrFlag && currentUser!==null">
+ <ion-card>
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col>
+        <ion-avatar class="profile">
+           <ion-img src={{defaultimageProvider}}></ion-img>
+          </ion-avatar>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+   <ion-grid>
+      <ion-row style="border-top: 1px solid #DADADA;">
+      <ion-col>
+           <ion-row>
+             <ion-col>
+              <div  class="ion-text-center size">
+                <strong> {{rating | number: '1.0-0'}}.0</strong>
+               </div>
+               </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div class="ion-text-center">
+                  <img src="assets/ratings/rating-{{rating | number: '1.0-0'}}.svg">                
+               </div> 
+               </ion-col>
+            </ion-row>
+        </ion-col>
+      <ion-col style="border-left: 1px solid #DADADA;">
+          <ion-row>
+            <ion-col>
+            <div  class="ion-text-center size">
+            <strong>{{hireTimes}}</strong>
+            </div>
+            </ion-col>
+          </ion-row>
+          <ion-row >
+            <ion-col>
+              <div class="ion-text-center">
+                <ion-label>Times Hired</ion-label>
+              </div> 
+              </ion-col>
+          </ion-row>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+  <div>
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button 
+                      color="light"
+                      expand="full"
+                      shape="round"
+                      type="submit" 
+                      (click)="onEdit()">Edit Profile</ion-button>
+          </ion-col>
+        </ion-row>
+   </ion-grid>
+  </div>
+   <ion-card>
+        <ion-segment (ionChange)="segmentChanged($event)" value="profileOptions">
+          <ion-segment-button value="profileOptions">
+            <p>Profile Options</p>
+          </ion-segment-button>
+          <ion-segment-button value="posts">
+            <ion-label>Posts</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        
+        <div *ngIf="type==='profileOptions'"> 
+          <app-profile-options></app-profile-options>
+        </div>
+        <div *ngIf="type==='posts'"> 
+          <app-posts></app-posts>
+        </div>
+  </ion-card>
+</ion-content>

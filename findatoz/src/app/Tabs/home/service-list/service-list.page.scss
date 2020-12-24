@@ -1,0 +1,72 @@
+ion-icon {
+    font-size: 25px;
+    color:#000000;
+}
+ion-buttons{
+    margin-left: 2%;
+    margin-right: 4%;
+ }
+ion-avatar{
+    margin-left: 10%;
+}
+a{
+    text-decoration: none;
+}
+ion-searchbar{
+    display: inherit!important;
+}
+ion-card{
+    box-shadow: none;
+ }
+ ion-back-button{
+     color: black;;
+ }
+
+ .right-pad{
+     padding-right: 4%;;
+ }
+ .city{
+    color: rgba(0, 0, 0, 0.6);
+    text-align: end;
+ }
+ .rating{
+      margin-top: 6%;
+ }
+ .name{
+     font-weight: bold;
+     color: black;
+ }
+ .color{
+    color: black;
+ }
+ .mar-top{
+     margin-top:2%
+ }
+ .search-pad{
+     padding: 3% 4% 1% 4%;
+ }
+ .pad-top{
+     padding-top: 10%;
+ }
+
+ //ios styling
+
+ .ios ion-card{
+    box-shadow: none;
+    margin: 10px 0px;
+ }
+ .ios ion-avatar{
+     width: 75%;
+     height: 95%;
+    margin-left: 10%;
+}
+.ios .right-pad{
+    padding-right: 5%;
+}
+.ios  .search-pad{
+    padding: 3% 3% 0% 3%;
+}
+.ios ion-buttons{
+    margin-left: 3%;
+    margin-right: 3%;
+ }

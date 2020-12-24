@@ -1,0 +1,37 @@
+<ion-grid *ngIf="msgFlag">
+  <ion-row class="ion-text-center" style="margin-top:40%">
+    <ion-col>
+      <strong>No Feedbacks provided!</strong>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-list *ngIf="!msgFlag" lines="none">
+  <ion-item *ngFor='let fb of feedback;let i=index'>
+    <ion-grid>
+      <ion-row>
+        <ion-col size='2'>
+              <ion-avatar>
+                <img *ngIf="Users[i]?.profilePath" src={{Users[i].profilePath}}/>
+                <img *ngIf="!Users[i]?.profilePath" src="assets/avatar.svg"/>
+              </ion-avatar>
+        </ion-col>  
+        <ion-col size='8'>
+          <ion-row style='color: black;padding: 0.2rem;'>
+              <b>{{Users[i]?.firstName}} {{Users[i]?.lastName}}</b>
+          </ion-row>
+          <ion-row style="color:grey;padding: 0.2rem;font-size: 15px;">
+            {{fb.review}}
+        </ion-row>
+        </ion-col>
+        <ion-col size='2'>
+          <ion-row style="font-size: 15px;">
+            <img src="assets/star.svg">
+             {{fb.rating}} 
+        </ion-row>
+        </ion-col>
+        </ion-row>
+
+     </ion-grid>
+  </ion-item>
+</ion-list>

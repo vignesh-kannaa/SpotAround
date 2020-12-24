@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-toolbar>
+       <ion-buttons slot="start">
+         <ion-menu-button ></ion-menu-button>
+      </ion-buttons>
+
+          <h3 class="ion-text-center">Categories</h3>
+     
+        <ion-buttons large slot="end" style=" margin-left: 10%;">
+          <a [routerLink]="['/tabs/settings']"> <ion-icon name="settings-outline"></ion-icon> </a>
+        </ion-buttons>
+       
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="msgFlag" >
+  <ion-row class="ion-text-center" style="margin-top:40%">
+    <ion-col>
+      <strong>No Services available</strong>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-content *ngIf="!msgFlag">
+    <!-- <ion-grid>
+      <ion-row>
+        <ion-col class="ion-padding-horizontal">
+          <ion-searchbar placeholder="Search"
+                        (ionInput)="getItems($event)">
+        </ion-searchbar>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+    
+ <app-accordion-list  *ngFor="let category of filterData" 
+        title={{category.mainCategory}} image={{category.imagePath_MC}}></app-accordion-list>
+
+<!--skeleton loader-->
+<div *ngIf="loader">
+  <ion-card  class="bg-color">
+    <ion-skeleton-text animated=true></ion-skeleton-text>
+  </ion-card>
+  <ion-card  class="bg-color">
+    <ion-skeleton-text animated=true></ion-skeleton-text>
+  </ion-card>
+  <ion-card class="bg-color">
+    <ion-skeleton-text animated=true></ion-skeleton-text>
+  </ion-card>
+  <ion-card class="bg-color">
+    <ion-skeleton-text animated=true></ion-skeleton-text>
+  </ion-card>
+  </div>
+</ion-content>

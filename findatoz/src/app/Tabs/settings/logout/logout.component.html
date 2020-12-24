@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+  <strong style="padding-right: 10%;">Log Out</strong>
+  
+    <ion-icon name="close-outline" slot="start" (click)="onClose()"></ion-icon>
+  
+  </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-grid>
+  
+      <ion-row class="ion-text-center ion-padding">
+        <ion-col>
+          <ion-label>Are you sure to Log Out?</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-button
+            expand="full"
+            shape="round"
+            type="submit" 
+            (click)="onClick()">Log Out</ion-button>
+        <ion-button 
+          color="light"
+          expand="full"
+          shape="round"
+          type="submit" 
+          (click)="onClose()">No, I will Stay</ion-button>
+    </ion-grid>
+  </ion-content>

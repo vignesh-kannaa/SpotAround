@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar>
+     <h3 class="ion-text-center">Requests</h3>
+     <ion-buttons large slot="end" style=" margin-left: 10%;">
+      <ion-icon (click)="onClose()" name="close-outline"></ion-icon>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+   
+     <ion-list lines="none" >
+          <ion-item>
+            <h3>{{providerName}}</h3>
+            <ion-badge *ngIf="requestdetail.status==='Pending'"  slot="end" color="warning">{{requestdetail.status}}</ion-badge>
+            <ion-badge *ngIf="requestdetail.status==='Approved'"  slot="end" color="tertiary">{{requestdetail.status}}</ion-badge>
+            <ion-badge *ngIf="requestdetail.status==='Completed'"  slot="end" color="success">{{requestdetail.status}}</ion-badge>
+            <ion-badge *ngIf="requestdetail.status==='Rejected'"  slot="end" color="danger">{{requestdetail.status}}</ion-badge>
+            <ion-badge *ngIf="requestdetail.status==='Cancelled'"  slot="end" color="danger">{{requestdetail.status}}</ion-badge>
+          </ion-item>
+          <ion-item class="pad">
+            <ion-row>
+              <ion-col size="2">
+                <img src="assets/calendarlogo.svg">
+              </ion-col>
+              <ion-col size="10">
+                <ion-row>
+                  <ion-label>Date</ion-label>
+                </ion-row>
+                <ion-row>
+                  <strong>{{requestdetail.startDate |  date:'mediumDate'}}</strong>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+
+          <ion-item class="pad">
+            <ion-row>
+              <ion-col size="2">
+                <img src="assets/timelogo.svg">
+              </ion-col>
+              <ion-col size="10">
+                <ion-row>
+                  <ion-label>Time</ion-label>
+                </ion-row>
+                <ion-row>
+                  <strong>{{requestdetail.startTime |  date:'shortTime'}} - {{requestdetail.endTime |  date:'shortTime'}}</strong>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+
+          <ion-item class="pad">
+            <ion-row>
+              <ion-col size="2">
+                <img src="assets/locationlogo.svg">
+              </ion-col>
+              <ion-col size="10">
+                <ion-row>
+                  <ion-label>Location</ion-label>
+                </ion-row>
+                <ion-row>
+                  <strong>{{requestdetail.reqCity}} , {{requestdetail.reqState}}</strong>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+
+          <ion-item class="pad">
+            <strong>Message</strong>
+          </ion-item>
+          <ion-item >
+            <ion-label>{{requestdetail.message}}</ion-label>
+          </ion-item>
+        </ion-list>
+        <!-------------------- buttons based on status-------------------->
+        
+            <ion-button *ngIf="requestdetail.status==='Pending'" expand="full"
+            shape="round"
+            type="submit" 
+            color='medium'
+            (click)="CancelRequest()">Cancel the request</ion-button>
+        
+
+            <ion-button *ngIf="requestdetail.status==='Approved'" expand="full"
+            shape="round"
+            type="submit" 
+            color='medium'
+            (click)="CancelApprovedRequest()">Cancel the Approved request</ion-button> 
+
+
+            <ion-button *ngIf="requestdetail.status==='Completed'" expand="full"
+            shape="round"
+            type="submit" 
+            [disabled]=rated
+            (click)="Rate()">Rate the Service</ion-button> 
+
+
+
+    </ion-card>
+</ion-content>

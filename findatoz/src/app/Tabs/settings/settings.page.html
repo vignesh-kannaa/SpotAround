@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+     <ion-buttons slot="start">
+       <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+        <h3>Settings</h3>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+<ion-list lines=none>
+
+  <a [routerLink]="['/tabs/settings/change-password']" *ngIf='currentUser!=null'>
+      <ion-item detail>
+      <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-label>Change Password</ion-label>
+      </ion-item>
+  </a>
+
+  <!-- <ion-item detail>
+     <ion-icon  name="document-outline"></ion-icon>
+    <ion-label>Privacy</ion-label>
+  </ion-item>
+  <ion-item detail>
+  <ion-icon name="document-outline"></ion-icon>
+    <ion-label>Terms and Conditions</ion-label>
+  </ion-item> -->
+  <ion-item detail>
+  <ion-icon  name="share-social-outline"></ion-icon>
+    <ion-label>Share app to a friend</ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-list *ngIf="!creatorFlag && currentUser!=null" lines=none>
+  <ion-item (click)="switchaccount(true)">
+    <ion-icon name="briefcase-outline"></ion-icon>
+    <ion-label>  Switch to Business  </ion-label>
+  </ion-item>
+</ion-list>
+<ion-list>
+
+  <!-- <ion-item (click)="logOut()" *ngIf='currentUser!=null'>
+  <ion-icon name="power-outline"></ion-icon>
+    <ion-label>  Log Out  </ion-label>
+  </ion-item> -->
+</ion-list>
+</ion-content>

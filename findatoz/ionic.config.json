@@ -1,0 +1,8 @@
+{
+  "name": "spotaround",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "667855b3"
+}

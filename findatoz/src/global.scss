@@ -1,0 +1,155 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+/* modal */
+.my-custom-class .modal-wrapper{
+    height: 90%;
+    top: 0%;
+    position: absolute;
+    display: block;
+    width: 100%;  
+ }
+
+ .hireRequestmodal .modal-wrapper{
+   height: 100%;
+   bottom: 0%;
+   position: absolute;
+   display: block;
+    
+}
+.ratemodal .modal-wrapper{
+   height: 40%;
+   bottom: 0%;
+   position: absolute;
+   display: block;
+    
+}
+
+.switchaccountmodal .modal-wrapper{
+   height: 75%;
+   bottom: 0%;
+   position: absolute;
+   display: block;
+    
+}
+.logoutModal .modal-wrapper{
+   height: 34%;
+   bottom: 0%;
+   position: absolute;
+   display: block;
+    
+}
+.imageViewerModal  .modal-wrapper{
+   bottom: 0%;
+   position: absolute;
+   display: block;
+   height: 65%;
+}
+
+.galleryViewerModal .modal-wrapper{
+   
+   bottom: 0%;
+   position: absolute;
+   display: block;
+   height: 100%;
+}
+
+ /*-------------SEARCH BAR-----------------*/
+   .searchbar-input {
+   background: #FFF !important;
+   border-radius: 30px !important;
+   max-width: 400px;
+  
+}
+
+.ios .searchbar-input {
+   background: #FFF !important;
+   border-radius: 30px !important;
+   max-width: 400px;
+   padding-left: 50px !important;;
+   border: 0.1px solid #1916162e;
+}
+.ios .searchbar-search-icon{
+   padding-left: 15px !important;
+}
+
+
+/*-------------calendar-------------------*/
+
+table,td, th,tr {
+   border: 0 !important;
+   background: #FFFFFF;
+ }
+td{
+   padding: 16px!important;
+   font-size: 16px !important;
+}
+ th {
+  color: #FFFFFF !important;
+  background-color: #300099 !important; ;
+ }
+
+ .monthview-primary-with-event, .calendar-event-inner{
+   background-color: #300099 !important;
+   border-radius: 50px;
+   font-weight: bold;
+}
+.monthview-selected{
+   background-color: #300099 !important;
+   border-radius: 50px;
+   font-weight: bold;
+   
+   color: #FFFFFF !important;
+}
+.monthview-current{
+   border-radius: 50%;
+   background-color: #c3c2c2!important;
+   color: #FFFFFF !important;
+}
+.my-calender-class .modal-wrapper {
+   height: 60%;
+   bottom: 0%;
+   position: absolute;
+   display: block;
+ }
+ .no-events-label{
+    display: none;
+ }
+ 
+ ion-item {
+   --border-width: 0;
+   --inner-border-width: 0;
+}
+
+/*-------------select option-------------------*/
+
+.alert-radio-group.sc-ion-alert-md{
+   max-height: 400px;
+}
+.alert-radio-group.sc-ion-alert-ios{
+   max-height: 400px;
+}

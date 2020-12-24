@@ -1,0 +1,85 @@
+<ion-app>
+  <ion-menu side="start"  swipe-gesture=true >
+    <ion-header style="height: 15%;">
+      <ion-toolbar style="height: 100%;" color="secondary">
+        <ion-row class="pad">
+          <ion-col size='2'>
+            <div>
+              <ion-avatar>
+                <img *ngIf="!currentUser?.profilePath" src="assets/avatar.svg">
+                <img *ngIf="currentUser?.profilePath" src={{currentUser?.profilePath}}>
+              </ion-avatar>
+            </div>
+          </ion-col> 
+          <ion-col size='8'class="mar">   
+            <div>
+              <ion-title style="padding: 0;">{{currentUser?currentUser.firstName:'User'}}</ion-title>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list lines=none>
+        <ion-menu-toggle *ngIf="currentUser">
+          <a [routerLink]="['/tabs/profile/request-list']" >
+            <ion-item >
+              <ion-icon name="document-outline"></ion-icon>
+                <ion-label>My Request</ion-label>
+              </ion-item>
+          </a>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <a [routerLink]="['/tabs/message']" >
+          <ion-item >
+            <ion-icon name="chatbubble-outline"></ion-icon>
+            <ion-label>Chats</ion-label>
+          </ion-item>
+          </a>
+      </ion-menu-toggle>
+      <ion-menu-toggle *ngIf="currentUser && !creatorFlag">
+        <ion-item (click)="toBusiness(true)" >
+          <ion-icon name="briefcase-outline"></ion-icon>
+            <ion-label>Switch to Business</ion-label>
+          </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle *ngIf="creatorFlag">
+        <ion-item (click)="toBusiness(false)">
+          <ion-icon name="briefcase-outline"></ion-icon>
+            <ion-label>Switch to Nomal account</ion-label>
+          </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item >
+          <ion-icon  name="share-social-outline"></ion-icon>
+            <ion-label>Share app to a friend</ion-label>
+          </ion-item>
+      </ion-menu-toggle>
+      <!-- <ion-item >
+        <ion-icon name="moon-outline"></ion-icon>
+          <ion-label>Dark theme</ion-label>
+          <ion-toggle color="primary" (ionChange)="onToggle($event)"></ion-toggle>
+        </ion-item> -->
+    
+    <ion-menu-toggle>
+      <a [routerLink]="['/tabs/settings']" >
+      <ion-item >
+        <ion-icon name="settings-outline"></ion-icon> 
+          <ion-label>Settings</ion-label>
+        </ion-item>
+        </a>
+    </ion-menu-toggle>
+
+      <ion-menu-toggle>
+        <ion-item (click)="logging()">
+          <ion-icon name="power-outline"></ion-icon>
+                <ion-label>{{currentUser?'Log Out':'Login'}}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+    </ion-list>
+ </ion-content>
+</ion-menu>
+<ion-router-outlet main></ion-router-outlet>
+      
+  
+</ion-app>

@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/tabs/home/service-list/{{servicedetail?.subCategory}}"></ion-back-button>
+    </ion-buttons>
+    <h3 class="ion-text-center"> {{servicedetail?.subCategory}}</h3>
+     <ion-buttons large slot="end">
+      <a [routerLink]="['/tabs/settings']"> <ion-icon name="settings-outline"></ion-icon> </a>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="loader">
+  <div class="ion-text-center pad-top">
+    <app-loader></app-loader>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="!loader">
+  <ion-card>
+    <ion-grid>
+      <ion-row >
+        <ion-col size=5  >
+            <ion-avatar class="mar">
+              <img *ngIf="servicedetail?.imagePath" src={{servicedetail?.imagePath}}/>
+              <img *ngIf="!servicedetail?.imagePath" src="assets/avatar.svg"/>
+            </ion-avatar>
+      </ion-col>  
+      <ion-col class="ion-no-padding">
+        <ion-row style="color:black;">
+          <h3><b>{{servicedetail?.firstName}} {{servicedetail?.lastName}}</b></h3>
+      </ion-row>
+        <ion-row class="pad">
+          <ion-icon name="location-outline" style="zoom:0.7;"></ion-icon>{{servicedetail?.city}} , {{servicedetail?.state}} 
+        </ion-row>
+        <ion-row  class="pad col">
+          <img src="assets/ratings/rating-{{servicedetail.ratings | number: '1.0-0'}}.svg">  &nbsp;               
+            {{servicedetail?.ratings | number: '1.0-0'}}.0 
+        </ion-row>
+        <ion-row class="pad" >
+          {{servicedetail?.hiredTimes}} Times Hired
+        </ion-row>
+      </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col size="10">
+            <ion-button class="sendBtn"
+                        color='secondary' 
+                        shape="round"  
+                        (click)="hirerequest()">Send Request</ion-button>
+        </ion-col>
+
+        <ion-col size="2" style="margin: auto;" (click)="sendMessage(servicedetail?.email)">
+          <img src="assets/messageicon.svg" alt="messageicon">
+            <!-- <ion-avatar class="msgbutton" (click)="sendMessage(servicedetail?.email)">
+                <ion-icon color="primary" name="chatbubble-outline" style="margin: 15%;"></ion-icon>
+            </ion-avatar>   -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-card>
+    
+    <ion-card>
+      <ion-segment (ionChange)="segmentChanged($event)" value="gallery">
+        <ion-segment-button value="gallery">
+          <p>Gallery</p>
+        </ion-segment-button>
+        <ion-segment-button value="reviews">
+          <ion-label>Reviews</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="aboutme">
+          <ion-label>About Me</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <br>
+      <div *ngIf="type==='gallery'"> 
+        <app-gallery id={{servicedetail?.email}}></app-gallery>
+      </div>
+      <div *ngIf="type==='reviews'"> 
+        <app-review id={{servicedetail?.email}}></app-review>
+      </div>
+      <div *ngIf="type==='aboutme'"> 
+        <app-aboutme id={{servicedetail?.email}}
+                    description={{servicedetail?.description}}></app-aboutme>
+      </div>
+      </ion-card>
+</ion-content>

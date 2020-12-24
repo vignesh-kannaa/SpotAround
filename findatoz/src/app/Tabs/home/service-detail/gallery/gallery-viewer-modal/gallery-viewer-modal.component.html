@@ -1,0 +1,17 @@
+
+
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+   
+    <strong >View Photo</strong>
+    <ion-icon class="ion-padding-start" name="close-outline" slot="start" (click)="onClose()"></ion-icon>
+    <strong style="color: #300099;" class="ion-padding-end" slot="end"> {{index+1}}/{{imageCount}} </strong>
+  </ion-toolbar>
+  </ion-header>
+<div class="container">
+  <img src={{imagedetails[index].pic}}>
+  <img class="rightarrow" [hidden]=rightFlag src="assets/rightArrow.svg" alt="rightarrow" (click)="onNext()">
+  <img class="leftarrow" [hidden]=leftFlag src="assets/leftArrow.svg" alt="leftarrow" (click)="onPrevious()">
+ </div>
+
+  
