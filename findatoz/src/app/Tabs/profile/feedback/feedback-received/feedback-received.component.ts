@@ -35,7 +35,7 @@ export class FeedbackReceivedComponent implements OnInit {
             for(let i=0;i<this.feedback.length;i++){
               this.dataserv.getUserDetails(this.feedback[i].fromId).subscribe(data=>{
                 this.Users[i]=data;
-                console.log("data for user details api: "+this.Users[i].firstName);
+                
               })
           }
           }

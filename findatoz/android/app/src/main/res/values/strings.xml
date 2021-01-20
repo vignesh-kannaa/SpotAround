@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SpotAround</string>
+    <string name="title_activity_main">SpotAround</string>
+    <string name="package_name">com.spotaround</string>
+    <string name="custom_url_scheme">com.spotaround</string>
+    <string name="facebook_app_id">280069270064031</string>
+    <string name="fb_login_protocol_scheme">280069270064031</string>
+    <string name="server_client_id">253370946904-nve1g5boa87ouqqam27omp0clhr1eb8o.apps.googleusercontent.com</string>
+</resources>

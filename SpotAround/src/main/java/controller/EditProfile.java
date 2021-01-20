@@ -18,7 +18,6 @@ public class EditProfile {
 
 	@PostMapping("/editUserName")
 	public Users editUsername(@RequestBody Users user) {
-		System.out.println("user data in edit mode: "+user.getProfilePath());
 		
 		Users userdata=userRepo.findByEmail(user.getEmail());
 			userdata.setFirstName(user.getFirstName());

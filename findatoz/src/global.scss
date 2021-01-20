@@ -41,6 +41,14 @@
    display: block;
     
 }
+.appointmentSuccessMessage .modal-wrapper{
+   height: 55%;
+   bottom: 0%;
+   position: absolute;
+   display: block;
+    
+}
+
 .ratemodal .modal-wrapper{
    height: 40%;
    bottom: 0%;
@@ -56,8 +64,15 @@
    display: block;
     
 }
+.accountCreated .modal-wrapper{
+   height: 35%;
+   bottom: 0%;
+   position: absolute;
+   display: block;
+    
+}
 .logoutModal .modal-wrapper{
-   height: 34%;
+   height: 40%;
    bottom: 0%;
    position: absolute;
    display: block;
@@ -152,4 +167,10 @@ td{
 }
 .alert-radio-group.sc-ion-alert-ios{
    max-height: 400px;
+}
+/*-----------intro page pagination---------*/
+.swiper-pagination-bullets {
+   margin-left: 5%;
+   right: 35%;
+   left: auto!important;
 }

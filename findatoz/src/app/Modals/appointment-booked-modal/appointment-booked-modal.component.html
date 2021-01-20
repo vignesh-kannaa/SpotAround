@@ -1,0 +1,21 @@
+<ion-grid class="ion-text-center pad-top">
+  <strong class="pad-bottom">Good!</strong>
+      <ion-row>
+        <ion-col>
+           You have scheduled your appointment
+        </ion-col>
+      </ion-row>
+        <img src="assets/appoitment-modal.svg">
+      <ion-row>
+          <ion-col>
+              <strong>{{appointDate}} at {{appointTime}}</strong>
+            </ion-col>
+      </ion-row>
+      <ion-row class="pad-bottom">
+          <ion-col>
+            Wait till your appointment gets Confirmed
+           </ion-col>
+      </ion-row>
+            <ion-button  shape="round"
+            (click)="onClose()">Ok</ion-button>
+  </ion-grid>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+  <strong style="padding-right: 10%;">Switch to {{creatorFlag?'Normal':'Business'}}</strong>
+  
+    <ion-icon name="close-outline" slot="start" (click)="onClose()"></ion-icon>
+  
+  </ion-toolbar>
+  </ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-text-center ion-padding-top">
+      <ion-col> 
+        <img src="assets/switchaccount.svg">
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center ion-padding">
+        <ion-col  *ngIf="!creatorFlag">
+          <ion-label>Switching to Business Account will allow to post Images, Recieve service Request to promote your Local Business</ion-label>
+          </ion-col>
+  <!------------------------------Normal account ------------------------->
+          <ion-col  *ngIf="creatorFlag">
+            <ion-label>Switching to Normal Account will not show any business details </ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row class="row-bottom">
+            <ion-button
+                expand="full"
+                shape="round"
+                type="submit" 
+                (click)="onClick()">Switch to {{creatorFlag?'Normal':'Business'}}</ion-button>
+
+            <ion-button 
+              color="light"
+              expand="full"
+              shape="round"
+              type="submit" 
+              (click)="onClose()">Cancel</ion-button>
+          </ion-row>
+    </ion-grid>
+  </ion-content>

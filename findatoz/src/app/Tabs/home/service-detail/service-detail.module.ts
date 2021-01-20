@@ -12,8 +12,9 @@ import { ReviewComponent } from './review/review.component';
 import {AboutmeComponent} from './aboutme/aboutme.component';
 import { HireRequestModalComponent } from './hire-request-modal/hire-request-modal.component';
 import { GalleryViewerModalComponent } from './gallery/gallery-viewer-modal/gallery-viewer-modal.component';
-import { ServiceListPageModule } from '../service-list/service-list.module';
-import { LoginModalComponent } from './login-modal/login-modal.component';
+import { LoginModalComponent } from '../../../Modals/login-modal/login-modal.component';
+import { ModalsModule } from 'src/app/Modals/modals.module';
+import { CommonComponentModule } from 'src/app/CommonComponent/common-component.module';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { LoginModalComponent } from './login-modal/login-modal.component';
     ReactiveFormsModule,
     IonicModule,
     ServiceDetailPageRoutingModule,
-    ServiceListPageModule
+    CommonComponentModule,
+    ModalsModule
   ],
   declarations: [ServiceDetailPage,GalleryComponent,ReviewComponent,AboutmeComponent,HireRequestModalComponent,GalleryViewerModalComponent,LoginModalComponent],
   exports:[ReviewComponent]

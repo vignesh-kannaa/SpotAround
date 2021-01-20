@@ -36,7 +36,7 @@ export class FeedbackProvidedComponent implements OnInit {
                   this.dataserv.getProviderDetail(this.feedback[i].toId).subscribe(data=>{
                     
                     this.providers[i]=data;
-                    console.log("data form provider details api: "+this.providers[i].firstName);
+                    
                   })
               }
               }

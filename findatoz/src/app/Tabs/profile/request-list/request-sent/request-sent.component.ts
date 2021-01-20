@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import * as moment from 'moment';
 import { RequestModel } from 'src/app/Models/RequestModel';
 import { Dataservice } from 'src/app/Services/dataservice.service';
 import { Globalservice } from 'src/app/Services/global.service';
@@ -14,6 +13,7 @@ import { RequestSentModalComponent } from './request-sent-modal/request-sent-mod
 export class RequestSentComponent implements OnInit {
 
   msgFlag:boolean=true;
+  loader:boolean=true;
   currentUser:string;
   providersName:string[]=[];
   requestlist:RequestModel[];
@@ -28,6 +28,7 @@ export class RequestSentComponent implements OnInit {
     })
     this.dataserv.getRequest(this.currentUser).subscribe(data=>{
       this.requestlist=data;
+      this.loader=false;
       if(this.requestlist[0]?.fromId!=null){
         this.msgFlag=false;
       }

@@ -5,7 +5,7 @@
     </ion-buttons>
         <h3 class="ion-text-center" style=" margin-right: 10%;">Edit Profile</h3>
      <ion-buttons  *ngIf="bstatus" large slot="end" >
-      <ion-button 
+      <ion-button [disabled]="savebuttonflag"
           color='primary' 
           (click)="onSaveProvider()"
           [hidden]="!(editProfile1.valid && selectedCity!=='' && subCategrory!=='')">Save</ion-button>
@@ -18,23 +18,18 @@
 
   <!-----------------------Normal User--------------------------------------->
 
-
-<ion-grid class="ion-padding" *ngIf="!bstatus">
+<div  *ngIf="!bstatus">
+<ion-grid class="ion-padding">
   <ion-row >
-    
-        <ion-icon class="cam" name="camera-outline"></ion-icon>
-       
     <ion-col (click)="onClick()">
-      <ion-avatar class="profile">
-         <ion-img src={{defaultimageUser}}></ion-img>
+      <ion-avatar class="profile container">
+         <img src={{defaultimageUser}}>
+         <img src="assets/editProfileCamera.svg" class="cam">
         </ion-avatar>
       </ion-col>
     </ion-row>
   </ion-grid>
- 
-
- <!-- <ion-grid  *ngIf="businessFlag==='false' || businessFlag===null || businessFlag===undefined"> -->
-   <ion-grid *ngIf="!bstatus">
+   <ion-grid>
     <ion-row>
       <ion-col>
         <form [formGroup]="editProfile">  
@@ -54,28 +49,35 @@
                         shape="round"
                         type="submit" 
                         (click)="onSave()"
+                        [disabled]="savebuttonflag"
                         [hidden]=!editProfile.valid >Save Changes</ion-button>
           
         </form>
-      </ion-col>
+    </ion-col>
     </ion-row> 
   </ion-grid>
 
+  <ion-grid *ngIf="loader" class="ion-text-center pad-top">
+    <app-loader></app-loader>
+  </ion-grid>
+</div>
 <!-----------------------Creator Account--------------------------------------->
 
 <ion-grid class="ion-padding" *ngIf="bstatus">
   <ion-row >
-    
-        <ion-icon class="cam" name="camera-outline"></ion-icon>
-       
     <ion-col (click)="onClick()">
-      <ion-avatar class="profile">
-         <ion-img src={{defaultimageProvider}}></ion-img>
+      <ion-avatar class="profile container">
+         <img src={{defaultimageProvider}}>
+         <img src="assets/editProfileCamera.svg" class="cam">
         </ion-avatar>
       </ion-col>
     </ion-row>
   </ion-grid>
-    <!-- <ion-grid *ngIf="businessFlag==='true' && (businessFlag!==null || businessFlag!==undefined)"> -->
+
+  <ion-grid *ngIf="loader && bstatus" class="ion-text-center pad-top">
+    <app-loader></app-loader>
+  </ion-grid>
+
       <ion-grid *ngIf="bstatus">
       <ion-row>
         <ion-col>
@@ -100,7 +102,7 @@
           </ion-item>
           <ion-item>
             <ion-label>State</ion-label>
-            <ion-select (ionChange)="onSelectState($event)" [value]="selectedState">
+            <ion-select (ionChange)="onSelectState($event)">
               <ion-select-option *ngFor="let state of states" [value]="state">{{state.name}}</ion-select-option>
             </ion-select>
           </ion-item>

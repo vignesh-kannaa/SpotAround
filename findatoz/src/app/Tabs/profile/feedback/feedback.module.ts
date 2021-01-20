@@ -10,6 +10,7 @@ import { FeedbackPage } from './feedback.page';
 import { FeedbackProvidedComponent } from './feedback-provided/feedback-provided.component';
 import { FeedbackReceivedComponent } from './feedback-received/feedback-received.component';
 import { ServiceDetailPageModule } from '../../home/service-detail/service-detail.module';
+import { CommonComponentModule } from 'src/app/CommonComponent/common-component.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ServiceDetailPageModule } from '../../home/service-detail/service-detai
     FormsModule,
     IonicModule,
     FeedbackPageRoutingModule,
-    ServiceDetailPageModule
+    ServiceDetailPageModule,
+    CommonComponentModule
   ],
   declarations: [FeedbackPage,FeedbackProvidedComponent,FeedbackReceivedComponent]
 })

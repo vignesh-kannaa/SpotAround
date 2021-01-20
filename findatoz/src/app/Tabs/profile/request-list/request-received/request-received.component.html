@@ -1,13 +1,32 @@
-<ion-grid *ngIf="msgFlag">
-  <ion-row class="ion-text-center" style="margin-top:40%">
-    <ion-col>
-      <strong>No Requests made!</strong>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+<!----Loader-->
 
+<div  *ngIf="loader" class="ion-text-center pad-top">
+  <app-loader></app-loader>
+</div>
+<!-- No data-->
 
-<div *ngIf="!msgFlag">
+<ion-card *ngIf="msgFlag && !loader" style="height: 100%;color: black;">
+  <ion-grid>
+    <ion-row  class="ion-text-center" >      
+      <ion-col>
+        <img src="assets/no-appointments.svg" style="width: 40%;padding-top: 20%;">
+      </ion-col>
+    </ion-row>
+      <ion-row  class="ion-text-center" style="padding-top: 10%;">      
+        <ion-col>
+          <strong>No Appointments Scheduled</strong><br><br>
+        </ion-col>
+      </ion-row>
+      <ion-row  class="ion-text-center" style="margin: 0 10%;">      
+        <ion-col>
+          <ion-label>Sorry! There are no appointment Recieved.</ion-label><br><br>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-card>
+
+<!---Data present-->
+<div *ngIf="!msgFlag && !loader">
   <ion-card *ngFor='let request of requestlist; let i = index'>
     <ion-list lines="none" (click)="onClick(i)">
           <ion-item>

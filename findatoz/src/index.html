@@ -13,6 +13,7 @@
   <meta name="msapplication-tap-highlight" content="no" />
 
   <link rel="icon" type="image/png" href="assets/icon.svg" />
+  <meta name="google-signin-client_id" content="240283610507-r0mv4ggprfvi51da667s7nse3jkcgio0.apps.googleusercontent.com">
 
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -22,5 +23,23 @@
 <body>
   <app-root></app-root>
 </body>
+<script>
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: '280069270064031',
+      cookie: true, // enable cookies to allow the server to access the session
+      xfbml: true, // parse social plugins on this page
+      version: 'v5.0' // use graph api current version
+    });
+  };
 
+  // Load the SDK asynchronously
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
 </html>

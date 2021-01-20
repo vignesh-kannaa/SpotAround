@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-toolbar>
-     <h3 class="ion-text-center">Requests</h3>
-     <ion-buttons large slot="end" style=" margin-left: 10%;">
+  <ion-toolbar class="ion-text-center">
+     <h3 style="padding-right: 10%;">Appointment</h3>
+     <ion-buttons large slot="start" style=" margin-left: 5%;">
       <ion-icon (click)="onClose()" name="close-outline"></ion-icon>
   </ion-buttons>
   </ion-toolbar>
@@ -79,20 +79,20 @@
             shape="round"
             type="submit" 
             color='medium'
-            (click)="CancelRequest()">Cancel the request</ion-button>
+            (click)="CancelRequest()">Cancel the appointment</ion-button>
         
 
             <ion-button *ngIf="requestdetail.status==='Approved'" expand="full"
             shape="round"
             type="submit" 
             color='medium'
-            (click)="CancelApprovedRequest()">Cancel the Approved request</ion-button> 
+            (click)="CancelApprovedRequest()">Cancel the booked appointment</ion-button> 
 
 
             <ion-button *ngIf="requestdetail.status==='Completed'" expand="full"
             shape="round"
             type="submit" 
-            [disabled]=rated
+            [hidden]=rated
             (click)="Rate()">Rate the Service</ion-button> 
 
 

@@ -3,7 +3,7 @@
      <ion-buttons slot="start">
        <ion-menu-button ></ion-menu-button>
     </ion-buttons>
-        <h3>Settings</h3>
+        <h3 style="padding-right: 17%;">Settings</h3>
   </ion-toolbar>
 </ion-header>
 
@@ -17,32 +17,43 @@
         <ion-label>Change Password</ion-label>
       </ion-item>
   </a>
-
-  <!-- <ion-item detail>
+  <a href="https://spot-around.flycricket.io/privacy.html" target="_blank">
+   <ion-item detail>
      <ion-icon  name="document-outline"></ion-icon>
-    <ion-label>Privacy</ion-label>
+    <ion-label>Privacy Policy</ion-label>
   </ion-item>
-  <ion-item detail>
+  </a>
+  <ion-item *ngIf="creatorFlag && currentUser!=null" (click)="goPremium()">
+    <ion-icon name="wallet-outline"></ion-icon>
+   <ion-label>Premium Pack</ion-label>
+ </ion-item>
+ <!-- <ion-item detail>
   <ion-icon name="document-outline"></ion-icon>
     <ion-label>Terms and Conditions</ion-label>
   </ion-item> -->
-  <ion-item detail>
+  <ion-item detail (click)="onShare()">
   <ion-icon  name="share-social-outline"></ion-icon>
     <ion-label>Share app to a friend</ion-label>
   </ion-item>
+  <a href="https://play.google.com/store/apps/details?id=com.spotaround" target="_blank">
+  <ion-item detail>
+    <ion-icon name="star-half-outline"></ion-icon>
+      <ion-label>Rate Us</ion-label>
+    </ion-item>
+    </a>
 </ion-list>
 
-<ion-list *ngIf="!creatorFlag && currentUser!=null" lines=none>
+<!-- <ion-list *ngIf="!creatorFlag && currentUser!=null" lines=none>
   <ion-item (click)="switchaccount(true)">
     <ion-icon name="briefcase-outline"></ion-icon>
     <ion-label>  Switch to Business  </ion-label>
   </ion-item>
-</ion-list>
-<ion-list>
+</ion-list> -->
+<!-- <ion-list>
 
-  <!-- <ion-item (click)="logOut()" *ngIf='currentUser!=null'>
+  <ion-item (click)="logOut()" *ngIf='currentUser!=null'>
   <ion-icon name="power-outline"></ion-icon>
     <ion-label>  Log Out  </ion-label>
-  </ion-item> -->
-</ion-list>
+  </ion-item>
+</ion-list> -->
 </ion-content>

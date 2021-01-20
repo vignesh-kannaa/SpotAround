@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 import { Router } from '@angular/router';
-import { SwitchAccountComponent } from '../settings/switch-account/switch-account.component';
+import { SwitchAccountComponent } from '../../Modals/switch-account/switch-account.component';
 import { Globalservice } from 'src/app/Services/global.service';
 import { UsersModel } from 'src/app/Models/Users.model';
 import { ProvidersModel } from 'src/app/Models/providers.model';
@@ -55,12 +55,12 @@ export class ProfilePage implements OnInit {
     });
     }
 
-    async presentModal(value) {
+    async presentModal(val) {
       const modal = await this.modalController.create({
         component: SwitchAccountComponent,
         cssClass: 'switchaccountmodal',
         componentProps: {
-          value,
+          value:val
           },    
       });
       return await modal.present();
@@ -71,11 +71,10 @@ export class ProfilePage implements OnInit {
     }
  
   onEdit(){
-  this.router.navigate(['/','tabs','profile','edit-profile']);
+    this.router.navigate(['/','tabs','profile','edit-profile']);
   }
 
   segmentChanged(mode:any){
-    console.log(mode.detail.value);
     this.type=mode.detail.value;
     }
   toPreview(){

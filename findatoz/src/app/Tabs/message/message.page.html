@@ -9,25 +9,35 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>  
+
 
                         <!----LOGIN MESSAGE----->
-<ion-grid *ngIf="!currentUser">
-<ion-row  class="ion-text-center" style="margin-top: 25%;">
-  <ion-col >
-        <img src="assets/chat.svg">
-    </ion-col>
-</ion-row>
-  <ion-row  class="ion-text-center" >      
-     <ion-col>
-      <strong>You can chat with other users only if you Login</strong><br><br>
-      <a [routerLink]="['/auth/onboard']">
-        <ion-button  color='secondary' shape="round" style="width: 100%;" >Login</ion-button>
-      </a>
+<ion-content *ngIf="!currentUser" style="--background:#fffff">
+  <ion-grid>
+    <ion-row  class="ion-text-center" >      
+      <ion-col>
+        <img src="assets/chatpage.svg" style="width: 40%;padding-top: 20%;">
       </ion-col>
     </ion-row>
-</ion-grid>
-
+      <ion-row  class="ion-text-center" style="padding-top: 10%;">      
+        <ion-col>
+          <strong>Login Required</strong><br><br>
+        </ion-col>
+      </ion-row>
+      <ion-row  class="ion-text-center" style="margin: 0 10%;">      
+        <ion-col>
+          <ion-label>Login to Start asking your Queries, available time and so on.</ion-label><br><br>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <a [routerLink]="['/auth/onboard']">
+            <ion-button  color='secondary' shape="round" style="width: 100%;" >Login</ion-button>
+          </a>
+          </ion-col>
+        </ion-row>  
+    </ion-grid>
+</ion-content>
 <!----NO CHATS MESSAGE----->
   <ion-grid *ngIf="msgFlag && currentUser" >
     <ion-row class="ion-text-center"style="margin-top:40%">
@@ -43,7 +53,7 @@
   </ion-grid>
 
 <!----CHAT LISTS----->
-<div *ngIf="!msgFlag && currentUser">
+<ion-content *ngIf="!msgFlag && currentUser">
   <ion-grid>
       <ion-row>
         <ion-col class="search-pad">
@@ -68,5 +78,4 @@
       </ion-row>
     </ion-list>
   </ion-card>
-</div>   
 </ion-content>

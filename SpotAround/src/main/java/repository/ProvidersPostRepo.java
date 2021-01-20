@@ -21,4 +21,7 @@ public interface ProvidersPostRepo extends JpaRepository<ProvidersPostModel,Inte
 	@Transactional	
 	@Query(value="delete from providers_posts where email=:email and pic=:pic", nativeQuery = true)
 	void deletePost(@Param("email")String email,@Param("pic")String pic);
+	
+	@Query(value="select count(*) from providers_posts where email=:email", nativeQuery = true)
+	int countPost(@Param("email")String email);
 }

@@ -15,7 +15,7 @@ public interface CategoryRepo  extends JpaRepository<CategoryModel, Integer>{
 	@Query(value="select distinct id,main_category,image_path_mc,null as image_path_sc,null as sub_category,null as flag_mark from category where image_path_mc is not null;", nativeQuery = true)
 	List<CategoryModel> findCategories();
 	
-	@Query(value="select sub_category from category where main_category=:category", nativeQuery = true)
+	@Query(value="select sub_category from category where main_category=:category order by sub_category", nativeQuery = true)
 	List<String> findSubCategories(@Param("category")String category);
 	
 	@Query(value="select * from category where flag_mark='1' ", nativeQuery = true)

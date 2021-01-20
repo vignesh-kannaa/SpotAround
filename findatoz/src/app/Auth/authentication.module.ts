@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AuthenticationPageRoutingModule } from './authentication-routing.module';
 
 import { AuthenticationPage } from './authentication.page';
+import { CommonComponentModule } from '../CommonComponent/common-component.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { AuthenticationPage } from './authentication.page';
     FormsModule,
     IonicModule,
     AuthenticationPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonComponentModule
   ],
   declarations: [AuthenticationPage]
 })

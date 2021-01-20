@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProvidersModel } from 'src/app/Models/providers.model';
 import { ProvidersSkillsModel } from 'src/app/Models/providersSkill.model';
 import { Dataservice } from 'src/app/Services/dataservice.service';
 
@@ -22,9 +21,9 @@ export class AboutmeComponent implements OnInit {
       this.dataServ.getSkills(this.id).subscribe(data=>{
         this.loader=false;
         this.providerskillsArray=data;
-        console.log("about me:"+this.providerskillsArray[0])
+       
         if(this.providerskillsArray[0]!=null){
-          console.log("about me:"+this.providerskillsArray[0])
+    
           this.msgFlag=false;
         }else{
           this.msgFlag=true;

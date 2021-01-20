@@ -3,13 +3,26 @@
   <app-loader></app-loader>
 </div>
 
-<ion-grid *ngIf="msgFlag">
-  <ion-row class="ion-text-center" style="margin-top:5%">
-    <ion-col>
-      <strong>No Images uploaded</strong>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+
+  <ion-grid  *ngIf="msgFlag"  style="color: black;">
+    <ion-row  class="ion-text-center" >      
+      <ion-col>
+        <img src="assets/no-post.svg" style="width: 40%;">
+      </ion-col>
+    </ion-row>
+      <ion-row  class="ion-text-center">      
+        <ion-col>
+          <strong>No Posts</strong><br><br>
+        </ion-col>
+      </ion-row>
+      <ion-row  class="ion-text-center" style="margin: 0 10%;">      
+        <ion-col>
+          <ion-label>Create Posts and show off your skills.</ion-label><br><br>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
 
 <ion-grid style="padding-bottom:5%">
   <ion-row class="ion-no-padding">

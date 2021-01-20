@@ -10,9 +10,10 @@ import { RequestListPage } from './request-list.page';
 import { RequestReceivedComponent } from './request-received/request-received.component';
 import { RequestSentComponent } from './request-sent/request-sent.component';
 import { RequestSentModalComponent } from './request-sent/request-sent-modal/request-sent-modal.component';
-import { RateModalComponent } from './request-sent/request-sent-modal/rate-modal/rate-modal.component';
+import { RateModalComponent } from '../../../Modals/rate-modal/rate-modal.component';
 import { RequestReceivedModalComponent } from './request-received/request-received-modal/request-received-modal.component';
 import { IonicRatingModule } from 'ionic4-rating';
+import { CommonComponentModule } from 'src/app/CommonComponent/common-component.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +21,9 @@ import { IonicRatingModule } from 'ionic4-rating';
     IonicModule,
     RequestListPageRoutingModule,
     IonicRatingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonComponentModule
+
   ],
   declarations: [RequestListPage,
                 RequestReceivedComponent,

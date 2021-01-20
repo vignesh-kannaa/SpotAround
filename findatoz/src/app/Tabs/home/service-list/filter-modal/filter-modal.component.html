@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <strong >Filters</strong>
+  
+    <ion-icon class="ion-padding-start" name="close-outline" slot="start" (click)="onClose()"></ion-icon>
+    <strong slot="end" class="ion-padding-end" style="color:#300099" (click)="onReset()">Reset</strong>
+  </ion-toolbar>
+  </ion-header>
+<ion-content>
+    <ion-list>
+    <ion-item>
+      <ion-label>Select a Country</ion-label>
+      <ion-select (ionChange)="onSelectCountry($event)">
+        <ion-select-option *ngFor="let country of countries" [value]="country">{{country.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Select a State</ion-label>
+      <ion-select (ionChange)="onSelectState($event)">
+        <ion-select-option *ngFor="let state of states" [value]="state">{{state.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Select a City</ion-label>
+      <ion-select (ionChange)="onSelectCity($event)">
+        <ion-select-option *ngFor="let city of cities" [value]="city">{{city.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    </ion-list>
+    
+    <ion-button class="apply-filter" expand="full"
+                      shape="round"
+                      type="submit" 
+                      (click)="onSubmit()"
+                      [hidden]="selectedCity=='' ">Apply Filters</ion-button>
+</ion-content>

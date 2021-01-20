@@ -36,7 +36,7 @@ export class MessagePage implements OnInit {
            this.dataserv.chatlist(this.currentUser.email).subscribe(data=>{
              
              if(data!==null && data!==undefined && data){
-              console.log("data from chat list "+data);
+              
               this.chatList=data;
                 if(this.chatList[0]?.email){ 
                   this.msgFlag=false;

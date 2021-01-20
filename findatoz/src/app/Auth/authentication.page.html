@@ -28,7 +28,7 @@
           </ion-item>
           <ion-item>
               <ion-label position="floating">Password</ion-label>
-              <ion-input type="password" formControlName="password"></ion-input>
+              <ion-input type="password"  formControlName="password"></ion-input>
           </ion-item>
         
           <br>
@@ -37,7 +37,8 @@
                         shape="round"
                         type="submit" 
                         (click)="onLogIn()"
-                        [disabled]=!authLogin.valid>Log In</ion-button>
+                        [hidden]=!authLogin.valid
+                        [disabled]="loader">Log In</ion-button>
           
         </form>
       </ion-col>
@@ -72,14 +73,24 @@
                         shape="round"
                         type="submit" 
                         (click)="onSignUp()"
-                        [disabled]=!authSignup.valid>Sign Up</ion-button>
+                        [hidden]=!authSignup.valid
+                        [disabled]="loader">Sign Up</ion-button>
           
         </form>
       </ion-col>
     </ion-row>   
     <br>
-    <div class="ion-text-center" (click)='changeflag()'>{{signflag?'New User? Sign Up': 'Already an User? Log In'}}</div>
+    <div *ngIf="signflag" class="ion-text-center" (click)='changeflag()'>New User?&nbsp;<span class="font-style">Sign Up</span></div>
+    <div *ngIf="!signflag" class="ion-text-center" (click)='changeflag()'>Already an User?&nbsp;<span class="font-style"> Log In</span></div>
+
+    
+<!-----Loader-->
+    <div  *ngIf="loader" class="ion-text-center pad-top">
+      <app-loader></app-loader>
+    </div>
+
    </ion-content>
+
 
 
 

@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { EditProfilePageRoutingModule } from './edit-profile-routing.module';
 
 import { EditProfilePage } from './edit-profile.page';
-import { CropmodalComponent } from './cropmodal/cropmodal.component';
+import { CropmodalComponent } from '../../../Modals/cropmodal/cropmodal.component';
+import { CommonComponentModule } from 'src/app/CommonComponent/common-component.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CropmodalComponent } from './cropmodal/cropmodal.component';
     IonicModule,
     EditProfilePageRoutingModule,
     ReactiveFormsModule,
-    ImageCropperModule
+    ImageCropperModule,
+    CommonComponentModule
   ],
   declarations: [EditProfilePage,CropmodalComponent]
 })

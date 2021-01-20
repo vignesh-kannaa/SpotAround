@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ModalController, ToastController } from '@ionic/angular';
+import { ModalController} from '@ionic/angular';
 import { RequestModel } from 'src/app/Models/RequestModel';
 import { UsersModel } from 'src/app/Models/Users.model';
 import { Dataservice } from 'src/app/Services/dataservice.service';
 import { Globalservice } from 'src/app/Services/global.service';
 import { HttpClient } from '@angular/common/http';
+import { AppointmentBookedModalComponent } from 'src/app/Modals/appointment-booked-modal/appointment-booked-modal.component';
 
 @Component({
   selector: 'app-hire-request-modal',
@@ -33,7 +34,6 @@ export class HireRequestModalComponent implements OnInit {
   currentuser:UsersModel;
 
   constructor( public modalController: ModalController,
-            public toastController: ToastController,
             public dataserv:Dataservice,
             public globalserv:Globalservice,
             private httpClient: HttpClient) { }
@@ -63,15 +63,6 @@ export class HireRequestModalComponent implements OnInit {
     message: new  FormControl(''),
 });
 
-async presentToast() {
-  const toast = await this.toastController.create({
-    message: 'Your Request have been sent.',
-    duration: 3000,
-    color: "primary",
-  
-  });
-  toast.present();
-}
 
 onSubmit(){
 
@@ -83,12 +74,11 @@ onSubmit(){
    
   this.dataserv.saveRequest(requestdata).subscribe(data=>{
     this.modalController.dismiss();
-    this.presentToast();
+    this.appointmentBooked();
   });
     
   }
   onSelectCountry(selectedValue: any) {
-    
     this.selectedCountry=selectedValue.detail.value.name;
     this.states=this.stateList.states.filter(function(i){
       return i.country_id==selectedValue.detail.value.id;
@@ -111,5 +101,21 @@ onSubmit(){
 
   onClose(){
     this.modalController.dismiss(); 
+  }
+
+  async appointmentBooked() {
+    const requestdata=new RequestModel(null,
+      null,this.hireRequest.get('startdate').value,
+      this.hireRequest.get('starttime').value,
+      this.hireRequest.get('endtime').value,null,null,null,null);
+      
+    const modal = await this.modalController.create({
+      component: AppointmentBookedModalComponent,
+      cssClass: 'appointmentSuccessMessage',
+      componentProps: {
+        appointmentDate:requestdata,
+        },
+    });
+    return await modal.present();
   }
 }

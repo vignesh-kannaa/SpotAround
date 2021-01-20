@@ -9,15 +9,27 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content *ngIf="currentUser===null">
-  <ion-grid >
-      
-    <ion-row  class="ion-text-center" style="margin-top: 25%;">
-    
+
+<!------login  message----->
+<ion-content *ngIf="currentUser===null" style="--background:#fffff">
+  <ion-grid>
+    <ion-row  class="ion-text-center" >      
+      <ion-col>
+        <img src="assets/profilepage.svg" style="width: 40%;padding-top: 20%;">
+      </ion-col>
     </ion-row>
-      <ion-row  class="ion-text-center" >      
+      <ion-row  class="ion-text-center" style="padding-top: 10%;">      
         <ion-col>
-          <strong>Login to create your profile</strong><br><br>
+          <strong>Login Required</strong><br><br>
+        </ion-col>
+      </ion-row>
+      <ion-row  class="ion-text-center" style="margin: 0 10%;">      
+        <ion-col>
+          <ion-label>Login to Build your profile</ion-label><br><br>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
           <a [routerLink]="['/auth/onboard']">
             <ion-button  color='secondary' shape="round" style="width: 100%;" >Login</ion-button>
           </a>
@@ -56,7 +68,7 @@
         <a [routerLink]="['/tabs/profile/request-list']">
             <ion-item detail>
               <ion-icon  name="create-outline"></ion-icon>
-              <ion-label>Requests</ion-label>
+              <ion-label>Appointments</ion-label>
             </ion-item>
         </a>
         <a [routerLink]="['/tabs/profile/feedback']" >
@@ -118,7 +130,7 @@
           <ion-row >
             <ion-col>
               <div class="ion-text-center">
-                <ion-label>Times Hired</ion-label>
+                <ion-label>Times Booked</ion-label>
               </div> 
               </ion-col>
           </ion-row>

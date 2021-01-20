@@ -15,6 +15,7 @@ export class RequestReceivedComponent implements OnInit {
   
   msgFlag:boolean=true;
   currentUser:string;
+  loader:boolean=true;
   requestlist:RequestModel[];
   UsersName:string[]=[];
 
@@ -29,6 +30,7 @@ export class RequestReceivedComponent implements OnInit {
     })
     this.dataserv.getRequestToId(this.currentUser).subscribe(data=>{
       this.requestlist=data;
+      this.loader=false;
       if(this.requestlist[0]?.fromId!=null){
         this.msgFlag=false;
       }

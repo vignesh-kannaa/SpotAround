@@ -4,7 +4,7 @@ import { RequestModel } from 'src/app/Models/RequestModel';
 import { Dataservice } from 'src/app/Services/dataservice.service';
 
 
-import { RateModalComponent } from './rate-modal/rate-modal.component';
+import { RateModalComponent } from '../../../../../Modals/rate-modal/rate-modal.component';
 
 @Component({
   selector: 'app-request-sent-modal',

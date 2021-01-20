@@ -9,8 +9,8 @@ import { ProfilePage } from './profile.page';
 
 import { ProfileOptionsComponent } from './profile-options/profile-options.component';
 import { PostsComponent } from './posts/posts.component';
-import { ImageViewerModalComponent } from './posts/image-viewer-modal/image-viewer-modal.component';
-import { ServiceListPageModule } from '../home/service-list/service-list.module';
+import { ImageViewerModalComponent } from '../../Modals/image-viewer-modal/image-viewer-modal.component';
+import { CommonComponentModule } from 'src/app/CommonComponent/common-component.module';
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { ServiceListPageModule } from '../home/service-list/service-list.module'
     IonicModule,
     ProfilePageRoutingModule,
     IonicRatingModule,
-    ServiceListPageModule
+    CommonComponentModule    // for loader component
   ],
   declarations: [ProfilePage,ProfileOptionsComponent,PostsComponent,ImageViewerModalComponent]
 })

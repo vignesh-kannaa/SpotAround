@@ -38,7 +38,7 @@
             {{servicedetail?.ratings | number: '1.0-0'}}.0 
         </ion-row>
         <ion-row class="pad" >
-          {{servicedetail?.hiredTimes}} Times Hired
+          {{servicedetail?.hiredTimes}} Times Booked
         </ion-row>
       </ion-col>
       </ion-row>
@@ -48,14 +48,11 @@
             <ion-button class="sendBtn"
                         color='secondary' 
                         shape="round"  
-                        (click)="hirerequest()">Send Request</ion-button>
+                        (click)="hirerequest()">Schedule Appointment</ion-button>
         </ion-col>
 
         <ion-col size="2" style="margin: auto;" (click)="sendMessage(servicedetail?.email)">
           <img src="assets/messageicon.svg" alt="messageicon">
-            <!-- <ion-avatar class="msgbutton" (click)="sendMessage(servicedetail?.email)">
-                <ion-icon color="primary" name="chatbubble-outline" style="margin: 15%;"></ion-icon>
-            </ion-avatar>   -->
         </ion-col>
       </ion-row>
     </ion-grid>
