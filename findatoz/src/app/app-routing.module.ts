@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./Auth/authentication.module').then( m => m.AuthenticationPageModule)
   },
+  {
+    path: 'error-page',
+    loadChildren: () => import('./CommonComponent/error-page/error-page.module').then( m => m.ErrorPagePageModule)
+  },
 ];
 
 @NgModule({

@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import model.CategoryModel;
-import model.ProvidersModel;
 import model.Users;
 import repository.CategoryRepo;
-import repository.LocationRepo;
 import repository.ProvidersRepo;
 import repository.UsersRepo;
 
@@ -21,8 +19,7 @@ import repository.UsersRepo;
 @CrossOrigin
 public class ServiceController {
 
-	@Autowired
-	LocationRepo locRepo;
+
 	@Autowired
 	CategoryRepo catRepo;
 	@Autowired
@@ -36,19 +33,7 @@ public class ServiceController {
 		return userRepo.findByEmail(id);
 	}
 	
-	/*API to get the State and City*/
-	
-	@GetMapping("/getStates")
-	public List<String> getState() {
-		List<String> states=locRepo.findStates();		
-		return states;
-	}
 
-	@GetMapping("/getCities")
-	public List<String> getCities(@RequestParam("state") String state) {		
-		List<String> cities=locRepo.findCities(state);		
-		return cities;
-	}
 	
 	/*API to get the category and sub category*/
 	@GetMapping("/getCategory")

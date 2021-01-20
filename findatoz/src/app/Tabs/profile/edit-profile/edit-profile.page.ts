@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import {Plugins, Capacitor, CameraSource, CameraResultType} from '@capacitor/core'
 import { ModalController } from '@ionic/angular';
-import { CropmodalComponent } from './cropmodal/cropmodal.component';
+import { CropmodalComponent } from '../../../Modals/cropmodal/cropmodal.component';
 import { Router } from '@angular/router';
 import { Globalservice } from 'src/app/Services/global.service';
 import { UsersModel } from 'src/app/Models/Users.model';
@@ -10,6 +10,7 @@ import { Dataservice } from 'src/app/Services/dataservice.service';
 import { ProvidersModel } from 'src/app/Models/providers.model';
 import { ProvidersSkillsModel } from 'src/app/Models/providersSkill.model';
 import { HttpClient } from '@angular/common/http';
+import { AccountCreatedModalComponent } from 'src/app/Modals/account-created-modal/account-created-modal.component';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.page.html',
@@ -19,7 +20,9 @@ export class EditProfilePage implements OnInit {
 
 
   businessFlag:string;
+  loader:boolean=false;
   bstatus:boolean;
+  savebuttonflag:boolean=false;
   defaultimageUser:string='assets/avatar.svg';
   defaultimageProvider:string='assets/avatar.svg';
   skills=new FormArray([]);
@@ -62,10 +65,10 @@ export class EditProfilePage implements OnInit {
     private httpClient: HttpClient ) { }
 
   ngOnInit() { 
-  
+
     this.globalserv.currentUser.subscribe(data=>{
       this.currentUser=data;
-      if(this.currentUser.profilePath!=null){
+      if(this.currentUser.profilePath){
         this.defaultimageUser=this.currentUser.profilePath;
       }
     }); 
@@ -92,7 +95,7 @@ export class EditProfilePage implements OnInit {
    this.globalserv.currentProvider.subscribe(data=>{
      this.currentProvider=data;
      if(this.currentProvider!==null){
-       console.log("in the current provider condition:")
+      
       if(this.currentProvider?.imagePath){
           this.defaultimageProvider=this.currentProvider.imagePath;
       }
@@ -169,23 +172,50 @@ deleteSkill(index:number){
 
  /* SAVING USER PROFILE*/
   onSave(){
-    
-    const user=new UsersModel(this.currentUser.email,
-                               this.editProfile.get('firstName').value,
-                               this.editProfile.get('lastName').value,this.defaultimageUser,null)
-    this.dataservice.editusername(user).subscribe(response=>{
-      this.globalserv.updateuser(response);
-      this.router.navigate(['/','tabs','profile']);
-    this.globalserv.toastMessage("Updated successfully")
-    });
-
-    
-  }
+    this.savebuttonflag=true;
+    this.loader=true;
+    //save image in firebase if image is update else save remaining in database
+    if(this.defaultimageUser!=='assets/avatar.svg' && this.defaultimageUser!=this.currentUser.profilePath){
+    this.globalserv.onSaveProfile(this.currentUser.email,this.defaultimageUser,this.bstatus).then((res:any)=>{
+      this.defaultimageUser=res;
+      this.onSaveUser();
+    })
+    }else{
+      this.onSaveUser();
+    }
+}
+        onSaveUser(){
+          const user=new UsersModel(this.currentUser.email,
+            this.editProfile.get('firstName').value,
+            this.editProfile.get('lastName').value,this.defaultimageUser,null);
+                  
+            this.dataservice.editusername(user).subscribe(response=>{
+            this.globalserv.updateuser(response);
+            //update local storage data
+            this.globalserv.setLocalStorageUser(response);
+            this.router.navigate(['/','tabs','profile']);
+            this.globalserv.toastMessage("Updated successfully")
+            })
+            this.loader=false;
+        }
 
 
 /*---------SAVING PROVIDER PROFILE---------*/
 
 onSaveProvider(){
+  this.loader=true;
+  this.savebuttonflag=true;
+   //save image in firebase if image is update else save remaining in database
+    if(this.defaultimageProvider!=='assets/avatar.svg' && this.defaultimageProvider!=this.currentProvider.imagePath){
+      this.globalserv.onSaveProfile(this.currentUser.email,this.defaultimageProvider,this.bstatus).then((res:any)=>{
+      this.defaultimageProvider=res;
+      this.onSaveProviderDetail();
+    })
+  }else{
+    this.onSaveProviderDetail();
+  }
+}
+onSaveProviderDetail(){
   
   const skillsArrary=this.editProfile1.get('skillList').value;
   let skillsarr = [];
@@ -198,25 +228,30 @@ onSaveProvider(){
       skillsarr.push(lg); 
     }
   }
-  
-  const provider=new ProvidersModel(this.currentUser.email,
-                                    this.editProfile1.get('firstName1').value,
-                                    this.editProfile1.get('lastName1').value,this.defaultimageProvider,this.providerRatings,this.providerHiredTimes,
-                                    this.category,this.subCategrory,
-                                    this.selectedState,this.selectedCity,
-                                    this.editProfile1.get('description1').value)
-  
-  this.dataservice.saveProviderDetail(provider).subscribe(data=>{
-    console.log("message from the saveprovider api"+data);
-    this.router.navigate(['/','tabs','profile']);
-    this.globalserv.updateProvider(provider);
-    this.globalserv.toastMessage("Updated successfully");
 
-  })
-  this.dataservice.updateSkills(skillsarr).subscribe(data=>{
-    console.log("data from update skills api"+data);
-  })
-  
+  const provider=new ProvidersModel(this.currentUser.email,
+    this.editProfile1.get('firstName1').value,
+    this.editProfile1.get('lastName1').value,this.defaultimageProvider,this.providerRatings,this.providerHiredTimes,
+    this.category,this.subCategrory,
+    this.selectedState,this.selectedCity,
+    this.editProfile1.get('description1').value)
+
+      this.dataservice.saveProviderDetail(provider).subscribe(data=>{
+
+      this.router.navigate(['/','tabs','profile']);
+      if(this.currentProvider==null){
+       this.accountCreatedModal();
+      }
+      this.globalserv.updateProvider(provider);
+      //update local storage data
+      this.globalserv.setLocalStorageProvider(provider);
+      this.globalserv.toastMessage("Updated successfully");
+      this.loader=false;
+
+      })
+      this.dataservice.updateSkills(skillsarr).subscribe(data=>{
+    })
+
 }
 
 /*LOCATION LIST*/
@@ -297,8 +332,16 @@ async presentModal(image) {
       }else{
         this.defaultimageProvider=result.data;
       }
-     
     }
   });
+}
+
+//account created for the first time
+async accountCreatedModal() {
+  const modal = await this.modalController.create({
+    component: AccountCreatedModalComponent,
+    cssClass: 'accountCreated',
+  });
+  return await modal.present();
 }
 }

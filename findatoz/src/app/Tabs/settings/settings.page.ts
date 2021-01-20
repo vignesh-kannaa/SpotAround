@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { UsersModel } from 'src/app/Models/Users.model';
 import { Globalservice } from 'src/app/Services/global.service';
-import { LogoutComponent } from './logout/logout.component';
-import { SwitchAccountComponent } from './switch-account/switch-account.component';
-
+import { Plugins } from '@capacitor/core';
+const { Share } = Plugins;
 
 @Component({
   selector: 'app-settings',
@@ -16,7 +15,8 @@ export class SettingsPage implements OnInit {
   creatorFlag:boolean;
   currentUser:UsersModel;
   constructor(public modalController: ModalController,
-              private globalserv:Globalservice,) { }
+              private globalserv:Globalservice,
+              public alertController: AlertController) { }
   
   ngOnInit() {
     this.globalserv.currentUser.subscribe(data=>{
@@ -27,31 +27,42 @@ export class SettingsPage implements OnInit {
    });
   }
 
-  async switchModal(value) {
-    const modal = await this.modalController.create({
-      component: SwitchAccountComponent,
-      cssClass: 'switchaccountmodal',
-      componentProps: {
-        value,
-        },
-  
-    });
-    return await modal.present();
-  }
-  switchaccount(val){
-    this.switchModal(val);
-  }
-
-  // async logoutModal() {
+  // async switchModal(value) {
   //   const modal = await this.modalController.create({
-  //     component: LogoutComponent,
-  //     cssClass: 'logoutModal'
+  //     component: SwitchAccountComponent,
+  //     cssClass: 'switchaccountmodal',
+  //     componentProps: {
+  //       value,
+  //       },
+  
   //   });
   //   return await modal.present();
   // }
-  
-  // logOut(){
-  //   this.logoutModal();
+  // switchaccount(val){
+  //   this.switchModal(val);
   // }
+
+  async onShare(){
+    await Share.share({
+      title: 'SpotAround',
+      url: 'https://play.google.com/store/apps/details?id=com.spotaround',
+      dialogTitle: 'Share with customers'
+    });
+  }
+  
+  goPremium(){
+    this.presentAlert();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Premium Pack',
+      message: 'You can contact us on designstacks2729@gmail.com for further queries',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 
 }

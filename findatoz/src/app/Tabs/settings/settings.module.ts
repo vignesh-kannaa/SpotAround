@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { SettingsPageRoutingModule } from './settings-routing.module';
 
 import { SettingsPage } from './settings.page';
-import { SwitchAccountComponent } from './switch-account/switch-account.component';
-import { LogoutComponent } from './logout/logout.component';
+import { SwitchAccountComponent } from '../../Modals/switch-account/switch-account.component';
+import { LogoutComponent } from '../../Modals/logout/logout.component';
 
 @NgModule({
   imports: [

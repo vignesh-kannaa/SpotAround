@@ -15,35 +15,10 @@ export class GalleryViewerModalComponent implements OnInit {
   constructor(private modalController:ModalController,
               private dataserv:Dataservice ) { }
 
-  imageCount:number;
-  leftFlag:boolean=false;
-  rightFlag:boolean=false;
   ngOnInit() {
-    this.imageCount=this.imagedetails.length;
-   this.checkFlag();
+    
   }
-  onNext(){
-    this.index+=1;
-   this.checkFlag();
-  }
-  onPrevious(){
-    this.index-=1;
-    this.checkFlag();
-  }
-  checkFlag(){
-    if(this.index==0){
-      this.leftFlag=true;
-    }
-    if(this.index==this.imagedetails.length-1){
-      this.rightFlag=true;
-    }
-    if(this.index!=0){
-      this.leftFlag=false;
-    }
-    if(this.index!=this.imagedetails.length-1){
-      this.rightFlag=false;
-    }
-  }
+  
 onClose(){
   this.modalController.dismiss("close");
 }

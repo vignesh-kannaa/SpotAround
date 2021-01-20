@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-menu side="start"  swipe-gesture=true >
+  <ion-menu side="start"  swipe-gesture=true contentId="main">
     <ion-header style="height: 15%;">
       <ion-toolbar style="height: 100%;" color="secondary">
         <ion-row class="pad">
@@ -13,7 +13,10 @@
           </ion-col> 
           <ion-col size='8'class="mar">   
             <div>
-              <ion-title style="padding: 0;">{{currentUser?currentUser.firstName:'User'}}</ion-title>
+              <ion-title *ngIf="currentUser" style="padding: 0;">{{currentUser.firstName}}</ion-title>
+              <ion-menu-toggle>
+                <ion-title *ngIf="!currentUser" style="padding: 0;" (click)="logging()">Login</ion-title>
+            </ion-menu-toggle>
             </div>
           </ion-col>
         </ion-row>
@@ -50,17 +53,11 @@
           </ion-item>
       </ion-menu-toggle>
       <ion-menu-toggle>
-        <ion-item >
+        <ion-item (click)="onShare()">
           <ion-icon  name="share-social-outline"></ion-icon>
             <ion-label>Share app to a friend</ion-label>
           </ion-item>
       </ion-menu-toggle>
-      <!-- <ion-item >
-        <ion-icon name="moon-outline"></ion-icon>
-          <ion-label>Dark theme</ion-label>
-          <ion-toggle color="primary" (ionChange)="onToggle($event)"></ion-toggle>
-        </ion-item> -->
-    
     <ion-menu-toggle>
       <a [routerLink]="['/tabs/settings']" >
       <ion-item >
@@ -70,16 +67,16 @@
         </a>
     </ion-menu-toggle>
 
-      <ion-menu-toggle>
+      <ion-menu-toggle *ngIf="currentUser">
         <ion-item (click)="logging()">
           <ion-icon name="power-outline"></ion-icon>
-                <ion-label>{{currentUser?'Log Out':'Login'}}</ion-label>
+                <ion-label>Log Out</ion-label>
           </ion-item>
         </ion-menu-toggle>
     </ion-list>
  </ion-content>
 </ion-menu>
-<ion-router-outlet main></ion-router-outlet>
+<ion-router-outlet id="main"></ion-router-outlet>
       
   
 </ion-app>

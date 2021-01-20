@@ -1,57 +1,60 @@
 <ion-header>
-  <ion-toolbar>
-  <strong class="ion-padding-start">Send Request</strong>
-  
-    <ion-icon class="ion-padding-end" name="close-outline" slot="end" (click)="onClose()"></ion-icon>
-  
+  <ion-toolbar class="ion-text-center">
+  <strong style="padding-right: 10%;">Schedule Appointment</strong>
+    <ion-icon class="ion-padding-start" name="close-outline" slot="start" (click)="onClose()"></ion-icon>
   </ion-toolbar>
   </ion-header>
 
 <ion-content>
 
-<ion-card>
   <form [formGroup]="hireRequest">
+    <ion-card>
        <ion-item>
-          <ion-label>Pick a Date</ion-label>
+          <ion-label>Date</ion-label>
           <ion-datetime [min]="minDate" [max]="maxDate" formControlName="startdate" ></ion-datetime>
         </ion-item>
         <ion-item>
-          <ion-label>Pick a Start Time</ion-label>
+          <ion-label>Start Time</ion-label>
          <ion-datetime formControlName="starttime" display-format="h:mm A" picker-format="h:mm A" ></ion-datetime>
         </ion-item>
          <ion-item>
-          <ion-label>Pick a End Time</ion-label>
+          <ion-label>End Time</ion-label>
           <ion-datetime   formControlName="endtime" display-format="h:mm A" picker-format="h:mm A" ></ion-datetime>
           </ion-item>
+          <br>
+      </ion-card>
+      <ion-card>
           <ion-item>
-            <ion-label>Pick a Country</ion-label>
+            <ion-label>Country</ion-label>
             <ion-select (ionChange)="onSelectCountry($event)">
               <ion-select-option *ngFor="let country of countries" [value]="country">{{country.name }}</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item>
-            <ion-label>Pick a State</ion-label>
+            <ion-label>State</ion-label>
             <ion-select (ionChange)="onSelectState($event)">
               <ion-select-option *ngFor="let state of states" [value]="state">{{state.name}}</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item>
-            <ion-label>Pick a City</ion-label>
+            <ion-label>City</ion-label>
             <ion-select (ionChange)="onSelectCity($event)">
               <ion-select-option *ngFor="let city of cities" [value]="city">{{city.name}}</ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-item>
-            <ion-textarea formControlName="message" placeholder="Enter additional message"></ion-textarea>
+      </ion-card>
+      <ion-card style="height: 120px;">
+          <ion-item style="height: 100px;">
+            <ion-textarea formControlName="message" placeholder="Note"></ion-textarea>
         </ion-item>
-      
+      </ion-card>
           <ion-button expand="full"
                       shape="round"
                       type="submit" 
                       (click)="onSubmit()"
-                      [hidden]="!hireRequest.valid || selectedCity===''">Send Request</ion-button>
+                      [hidden]="!hireRequest.valid || selectedCity===''">Schedule Appointment</ion-button>
         
       
   </form>
-  </ion-card>
+  
   </ion-content>

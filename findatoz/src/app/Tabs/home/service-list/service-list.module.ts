@@ -7,16 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { ServiceListPageRoutingModule } from './service-list-routing.module';
 
 import { ServiceListPage } from './service-list.page';
-import { LoaderComponent } from 'src/app/CommonComponent/loader/loader.component';
+import { FilterModalComponent } from './filter-modal/filter-modal.component';
+import { CommonComponentModule } from 'src/app/CommonComponent/common-component.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ServiceListPageRoutingModule
+    ServiceListPageRoutingModule,
+    CommonComponentModule
   ],
-  declarations: [ServiceListPage,LoaderComponent],
-  exports:    [ LoaderComponent ]
+  declarations: [ServiceListPage,FilterModalComponent],
 })
 export class ServiceListPageModule {}

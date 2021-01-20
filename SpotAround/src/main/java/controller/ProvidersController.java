@@ -72,10 +72,21 @@ public class ProvidersController {
 		return postRepo.findByEmail(pp.getEmail());
 		
 	}
+	@GetMapping("getPostCount")
+	public Boolean getPostsCount(@RequestParam("id") String id) throws IOException {
+		
+		int count=postRepo.countPost(id);
+		System.out.println("count:"+count);
+		if(count>=5) {
+			return false;
+		}
+		return true;
+		
+	}
+	
 	@GetMapping("getPost")
 	public List<ProvidersPostModel> getPosts(@RequestParam("id") String id) throws IOException {
 		
-		System.out.println("providers post for the id:"+id);
 		return postRepo.findByEmail(id);
 		
 	}

@@ -3,7 +3,7 @@
      <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
     </ion-buttons>
-     <h3 class="ion-text-center">Requests</h3>
+     <h3 class="ion-text-center">Appointments</h3>
      <ion-buttons large slot="end" style=" margin-left: 10%;">
       <a [routerLink]="['/tabs/settings']"> <ion-icon name="settings-outline"></ion-icon> </a>
   </ion-buttons>
@@ -33,11 +33,8 @@
       
     </ion-segment>
   </ion-card>
-  <div *ngIf="type==='received'"> 
-   <app-request-received></app-request-received>
-  </div>
-  <div *ngIf="type==='sent'"> 
-   <app-request-sent></app-request-sent>
-  </div>
+   <app-request-received *ngIf="type==='received'"></app-request-received>
+   <app-request-sent *ngIf="type==='sent'"></app-request-sent>
+  
   
 </ion-content>

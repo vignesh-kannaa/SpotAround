@@ -11,23 +11,40 @@
 </ion-header>
 
 
-  <ion-content *ngIf="msgFlag">
-      <ion-row class="ion-text-center" style="margin-top:40%">
-        <ion-col>
-          <strong>No Services available</strong>
-        </ion-col>
-      </ion-row>
-  </ion-content>
+  <!---------no services message------>
+    <ion-content *ngIf="msgFlag" style="--background:#fffff">
+      <ion-grid>
+        <ion-row  class="ion-text-center" >      
+          <ion-col>
+            <img src="assets/no-service.svg" style="width: 40%;padding-top: 20%;">
+          </ion-col>
+        </ion-row>
+          <ion-row  class="ion-text-center" style="padding-top: 10%;">      
+            <ion-col>
+              <strong>Sorry, No Result Found</strong><br><br>
+            </ion-col>
+          </ion-row>
+          <ion-row  class="ion-text-center" style="margin: 0 10%;">      
+            <ion-col>
+              <ion-label>There are no services for this category right now.</ion-label><br><br>
+            </ion-col>
+          </ion-row>
+ 
+        </ion-grid>
+      </ion-content>
 
 
   <ion-content *ngIf="!msgFlag">
     <ion-grid>
-      <ion-row>
-        <ion-col class="search-pad">
+      <ion-row class="search-pad">
+        <ion-col  size="11" >
           <ion-searchbar placeholder="Search"
                         (ionInput)="getItems($event)">
         </ion-searchbar>
         </ion-col>
+        <ion-col size="1" (click)="onFilter()" style="margin: auto;">
+          <img src="assets/filter.svg" style="max-width:150%">
+          </ion-col>
       </ion-row>
     </ion-grid>
 
@@ -61,8 +78,6 @@
          <ion-col size="3" class="city right-pad mar-top">
           {{item.city}}
         </ion-col>
-        
-        
         </ion-row>
      
         </ion-grid>

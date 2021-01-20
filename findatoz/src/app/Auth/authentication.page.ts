@@ -1,14 +1,12 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 import { SignupModel } from '../Models/signup.mdel';
-import { UsersModel } from '../Models/Users.model';
 import { Dataservice} from '../Services/dataservice.service';
 import { Globalservice } from '../Services/global.service';
-
-//import { Globalservice } from '../Services/global.service';
 import {passvalidator} from './validator';
+
 
 @Component({
   selector: 'app-authentication',
@@ -18,6 +16,9 @@ import {passvalidator} from './validator';
 export class AuthenticationPage implements OnInit {
 
   signflag:boolean=true;
+  loader:boolean=false;
+  
+
   constructor(private router:Router,
               private dataserv:Dataservice,
               public toastController: ToastController,
@@ -43,13 +44,7 @@ export class AuthenticationPage implements OnInit {
     lastName: new  FormControl('',[Validators.required]),
   })
 
-  async presentToast(msg) {
-    const toast =  await this.toastController.create({
-      message: msg,
-      duration: 1000
-    });
-    toast.present();
-  }
+ 
   ngOnInit() {
     
   }
@@ -73,29 +68,33 @@ export class AuthenticationPage implements OnInit {
   // }
 /*-------------------- LOGIN METHOD  ------------*/
   onLogIn(){
- 
+    this.loader=true;
+    this.dataserv.login(this.authLogin.value).subscribe(response=>{
+      if(response!==null){
+        this.globalserv.setLocalStorageUser(response);
+        this.globalserv.updateuser(response);
+        this.router.navigate(['/tabs/home']);
+        
+      }
+      else{
+        this.globalserv.toastMessage("Incorrect password or Sign Up");
+       
+      }
+      this.loader=false;
+    });
     this.dataserv.getProviderDetail(this.authLogin.get('email').value).subscribe(response=>{
       if(response!==null){
+        this.globalserv.setLocalStorageProvider(response);
         this.globalserv.updateProvider(response);
       }
     });
-
-    this.dataserv.login(this.authLogin.value).subscribe(response=>{
-      if(response!==null){
-        this.globalserv.updateuser(response);
-        this.router.navigate(['/tabs/home']);
-      }
-      else{
-        this.presentToast("Incorrect password or Sign Up");
-      }
-    });
-    
   }
 
   
   /*-------------------- SIGNUPMETHOD  ------------*/
   
   onSignUp(){
+    this.loader=true;
     const sigupdata=new SignupModel(this.authSignup.get('email').value,
                                     this.authSignup.get('password').value,
                                     this.authSignup.get('firstName').value,
@@ -103,18 +102,16 @@ export class AuthenticationPage implements OnInit {
     
     this.dataserv.signup(sigupdata).subscribe(response=>{
       if(response!==null){
+        this.globalserv.setLocalStorageUser(response);
         this.globalserv.updateuser(response);
         this.router.navigate(['/auth/introscreen']);
       }
       else{
-        this.presentToast("Account already exists. Try Logging In");
+        this.globalserv.toastMessage("Account already exists. Try Logging In");
       }
+      this.loader=false;
     });
-      
-
-    }
-
-    
+  }
   
   onSkip(){
     this.router.navigate(['/tabs/home']);

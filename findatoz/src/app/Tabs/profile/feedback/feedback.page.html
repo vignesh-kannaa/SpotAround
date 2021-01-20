@@ -30,13 +30,9 @@
     </ion-segment-button>
   </ion-segment>
 </ion-card>
-  <br>
-  <div *ngIf="type==='received'"> 
-    <app-feedback-received></app-feedback-received>
-  </div>
-  <div *ngIf="type==='given'"> 
-    <app-feedback-provided></app-feedback-provided>
-  </div>
+    <app-feedback-received *ngIf="type==='received'"></app-feedback-received>
+    <app-feedback-provided *ngIf="type==='given'"></app-feedback-provided>
+  
   
 </ion-content>
 

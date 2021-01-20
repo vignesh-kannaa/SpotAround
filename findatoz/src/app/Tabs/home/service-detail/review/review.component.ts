@@ -11,8 +11,9 @@ import { Dataservice } from 'src/app/Services/dataservice.service';
 })
 export class ReviewComponent implements OnInit,OnChanges {
 
-  loader:boolean=true;
   @Input() id:string;
+
+  loader:boolean=true;
   msgFlag:boolean;
   feedback:FeedbackModel[];
   feedbackdetail:{

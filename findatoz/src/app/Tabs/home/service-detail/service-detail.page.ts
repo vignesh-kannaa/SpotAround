@@ -3,10 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { ModalController } from '@ionic/angular';
 import { HireRequestModalComponent } from './hire-request-modal/hire-request-modal.component';
-import { async } from 'rxjs/internal/scheduler/async';
 import { Globalservice } from 'src/app/Services/global.service';
 import { UsersModel } from 'src/app/Models/Users.model';
-import { LoginModalComponent } from './login-modal/login-modal.component';
+import { LoginModalComponent } from '../../../Modals/login-modal/login-modal.component';
 import { ProvidersModel } from 'src/app/Models/providers.model';
 import { Dataservice } from 'src/app/Services/dataservice.service';
 

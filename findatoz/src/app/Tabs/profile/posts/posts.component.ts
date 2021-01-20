@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 
 import {Plugins, Capacitor, CameraSource, CameraResultType} from '@capacitor/core'
 import { ModalController } from '@ionic/angular';
-import { CropmodalComponent } from '../edit-profile/cropmodal/cropmodal.component';
+import { CropmodalComponent } from '../../../Modals/cropmodal/cropmodal.component';
 import { Dataservice } from 'src/app/Services/dataservice.service';
 import { Globalservice } from 'src/app/Services/global.service';
 import { ProvidersPosts } from 'src/app/Models/providersPost.model';
-import { ImageViewerModalComponent } from './image-viewer-modal/image-viewer-modal.component';
+import { ImageViewerModalComponent } from '../../../Modals/image-viewer-modal/image-viewer-modal.component';
 import { OnChanges } from '@angular/core';
+
+
+
 
 @Component({
   selector: 'app-posts',
@@ -20,6 +23,7 @@ export class PostsComponent implements OnInit,OnChanges {
   currentProvider:string;
   loader:boolean=true;
   msgFlag:boolean;
+  firebaseUrl:String;
   constructor(private dataServ:Dataservice,
     private modalController:ModalController,
     private globalServ:Globalservice) { }
@@ -28,7 +32,6 @@ export class PostsComponent implements OnInit,OnChanges {
    
   }
   ngOnInit() {
-  console.log("currentprovider: "+this.currentProvider)
     this.globalServ.currentProvider.subscribe(data=>{
       this.currentProvider=data?.email;
       if(this.currentProvider==null){
@@ -51,26 +54,32 @@ export class PostsComponent implements OnInit,OnChanges {
     })
   }
   onUpload(){
-    
-      if(!Capacitor.isPluginAvailable('Camera')){
-        return;
-      }
-      Plugins.Camera.getPhoto({
-        quality:50,
-        source:CameraSource.Prompt,
-        correctOrientation:true,
-        width:300,
-        resultType:CameraResultType.DataUrl,
-      }).then(image=>{
-        
-        this.presentModal(image);
-       // this.defaultimage=image.dataUrl;
-      }).catch(error=>{
-          console.error();
-          return false;
-      });
+    if(this.currentProvider!=null){
+    this.dataServ.countImage(this.currentProvider).subscribe(data=>{
+        if(data){
+          if(!Capacitor.isPluginAvailable('Camera')){
+            return;
+          }
+          Plugins.Camera.getPhoto({
+            quality:50,
+            source:CameraSource.Prompt,
+            correctOrientation:true,
+            width:300,
+            resultType:CameraResultType.DataUrl,
+          }).then(image=>{
+            this.presentModal(image);
+          }).catch(error=>{
+              return false;
+          });
+        }else{
+          this.globalServ.toastMessage("You have reached your post limit. Upgrade to Premium to post more images")
+        }
+    });
+  }else{
+    this.globalServ.toastMessage("Create your account in edit profile before posting images");
+  }
     }
-  
+  //upload imagesss
     async presentModal(image) {
       this.modalController.create({
         component: CropmodalComponent,
@@ -84,11 +93,19 @@ export class PostsComponent implements OnInit,OnChanges {
         return modalEl.onDidDismiss();
       }).then(result=>{
         if(result.data!=="close"){
-          this.dataServ.uploadPost(new ProvidersPosts(this.currentProvider,result.data)).subscribe(data=>
-            this.images=data);
-        }
+          this.loader=true;
+          this.globalServ.onSaveFireBase(this.currentProvider,result.data).then((res:any)=>{
+           this.dataServ.uploadPost(new ProvidersPosts(this.currentProvider,res)).subscribe(data=>{
+            this.images=data;
+            this.loader=false;
+          }
+            );
       });
+      this.msgFlag=false;
     }
+    })
+  }
+  //display individual image
     async imageViewerModal(id) {
       const modal = await this.modalController.create({
         component: ImageViewerModalComponent,
@@ -107,7 +124,7 @@ export class PostsComponent implements OnInit,OnChanges {
         }
       });
     }
-  
+ 
     imageClick(id){
       this.imageViewerModal(id);
     }

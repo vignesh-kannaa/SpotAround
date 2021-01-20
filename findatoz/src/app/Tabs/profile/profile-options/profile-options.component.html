@@ -3,7 +3,7 @@
     <a [routerLink]="['/tabs/profile/request-list']" >
         <ion-item detail>
           <ion-icon  name="create-outline"></ion-icon>
-          <ion-label>Requests </ion-label>
+          <ion-label>Appointments </ion-label>
         </ion-item>
     </a>
  
@@ -19,8 +19,8 @@
          <ion-label> My calendar</ion-label>
        </ion-item>
      </a>
-  <a [routerLink]="['/tabs/profile/feedback']" >
-    <ion-item detail>        
+  <a>
+    <ion-item detail (click)="onShare()">        
       <ion-icon name="share-social-outline"></ion-icon>
       <ion-label>Share profile to friends</ion-label>
     </ion-item>

@@ -1,10 +1,26 @@
-<ion-grid *ngIf="msgFlag">
-  <ion-row class="ion-text-center" style="margin-top:40%">
-    <ion-col>
-      <strong>No Feedbacks provided!</strong>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+<!-- No data-->
+
+<ion-card *ngIf="msgFlag" style="height: 100%;color: black;">
+  <ion-grid>
+    <ion-row  class="ion-text-center" >      
+      <ion-col>
+        <img src="assets/feedback.svg" style="width: 40%;padding-top: 20%;">
+      </ion-col>
+    </ion-row>
+      <ion-row  class="ion-text-center" style="padding-top: 10%;">      
+        <ion-col>
+          <strong>No Feedbacks Recieved</strong><br><br>
+        </ion-col>
+      </ion-row>
+      <ion-row  class="ion-text-center" style="margin: 0 10%;">      
+        <ion-col>
+          <ion-label>Hold On! You will Recieve Feedbacks once people start realizing your amazing service.</ion-label><br><br>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-card>
+
+<!-----data available-->
 
 <ion-list *ngIf="!msgFlag" lines="none">
   <ion-item *ngFor='let fb of feedback;let i=index'>

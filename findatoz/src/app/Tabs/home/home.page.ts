@@ -21,6 +21,7 @@ filterData=[];
 ) { }
 
   ngOnInit() {
+    
     this.dataServ.getFeaturedCategory().subscribe(data=>{
        this.loader=false;
         this.items=data;
@@ -30,7 +31,8 @@ filterData=[];
         }else {
           this.msgFlag=true;
         }
-      });
+    }
+      );
    
   }
   initializeItems() {

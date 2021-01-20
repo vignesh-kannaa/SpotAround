@@ -1,14 +1,14 @@
-<div class="ion-text-center">
-  <ion-spinner  color="primary" *ngIf="loader"></ion-spinner>
+<div  *ngIf="loader" class="ion-text-center pad-top">
+  <app-loader></app-loader>
 </div>
-<div  *ngIf="msgFlag" >
+<div  *ngIf="msgFlag && !loader" >
     <ion-row class="ion-text-center" style="margin-top:25%;margin-bottom: 25%;">
       <ion-col>
-        <strong>No info! </strong>
+        <strong>No info</strong>
       </ion-col>
     </ion-row>
   </div>
-<div  *ngIf="!msgFlag"> 
+<div  *ngIf="!msgFlag && !loader"> 
     <ion-grid class="mar">
       <div>
         <h5>Description</h5>

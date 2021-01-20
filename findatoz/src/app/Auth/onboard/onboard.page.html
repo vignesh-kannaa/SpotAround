@@ -12,14 +12,14 @@
       </ion-row>
   </ion-grid>
 
-  <ion-card  class="ion-text-center pad-top"  (click)="socailSignIn('fb')">
+  <ion-card  class="ion-text-center pad-top"  (click)="fbLogging()">
      <div>
         <img class="align-img" src="assets/fb.svg">
            <strong>Continue using Facebook</strong>
         </div>
     </ion-card>
 
-    <ion-card class="ion-text-center pad-top"  (click)="socailSignIn('google')">
+    <ion-card class="ion-text-center pad-top"  (click)="googleSignup()">
      <div>
        <img  class="align-img" src="assets/google-logo.svg">
       <strong>Continue using Google</strong>
@@ -28,8 +28,8 @@
 
     <a routerLink="/auth">
     <ion-card  class="ion-text-center pad-top">
-      <div>
-        <img class="align-img" style="margin-top: 2%;" src="assets/email-logo.svg">
+      <div style="margin-top: 1%;">
+        <img class="align-img"  src="assets/email-logo.svg">
            <strong>Continue using Email</strong>
       </div>
     </ion-card>

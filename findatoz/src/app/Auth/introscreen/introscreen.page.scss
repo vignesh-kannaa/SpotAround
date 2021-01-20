@@ -4,6 +4,11 @@ ion-card{
 }
 ion-button{
     margin: 0% 5% 0 5%;
+    width: 30%;
+    position: absolute;
+    bottom: 10%;
+    right: 0%;
+    z-index: 1;
 }
 
 .image{
@@ -14,6 +19,7 @@ ion-button{
     max-height: 80%;
 }
 ion-slides{
+    position: relative;
     height: 90%;
 }
 .heading{
@@ -23,3 +29,4 @@ ion-slides{
 ion-content{
     --background:white;
 }
+

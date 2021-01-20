@@ -3,15 +3,15 @@
     <app-loader></app-loader>
   </div>
 
-  <div  *ngIf="msgFlag" >
+  <div  *ngIf="msgFlag && !loader" >
       <ion-row class="ion-text-center" style="margin-top:25%;margin-bottom: 25%;">
         <ion-col>
-          <strong>No Reviews! </strong>
+          <strong>No Reviews</strong>
         </ion-col>
       </ion-row>
     </div>
 
-<div *ngIf="!msgFlag" >
+<div *ngIf="!msgFlag && !loader" >
   <ion-list>
   <ion-item  *ngFor='let item of feedbackdetail'>
     <ion-grid>

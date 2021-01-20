@@ -2,6 +2,7 @@ package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -100,6 +101,21 @@ public class AuthenticateController {
 			return "success";
 		}
 		return "Incorrect";
+	}
+	
+	//Intro screen validation
+	@GetMapping("/userCheck")
+	public Boolean checkUserAvailability(@RequestParam("userId") String userid) {
+		if(userid!=null) {
+			if(userRepo.findByEmail(userid)==null) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}else {
+			return null;
+		}
 	}
 }
 
